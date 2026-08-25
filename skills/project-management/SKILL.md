@@ -47,7 +47,15 @@ CREATE TABLE IF NOT EXISTS names (
   thesis_ref TEXT,
   scan_id TEXT,
   created_at INTEGER NOT NULL,
-  updated_at INTEGER
+  updated_at INTEGER,
+  CHECK (ticker IS NULL OR (ticker COLLATE BINARY = UPPER(TRIM(ticker)) AND ticker <> '')),
+  CHECK (
+    stage NOT IN ('coverage', 'live') OR (
+      ticker IS NOT NULL AND
+      researcher_id IS NOT NULL AND
+      TRIM(researcher_id) <> ''
+    )
+  )
 );
 
 CREATE TABLE IF NOT EXISTS tasks (
@@ -68,7 +76,7 @@ CREATE TABLE IF NOT EXISTS tasks (
 
 `names.stage` is `candidate`, `coverage`, `live`, or `declined`. There is no watch stage.
 
-`names.ticker` is optional. Not every money-making idea is a listed ticker. Normalize a ticker to uppercase with no surrounding whitespace before lookup or insert. A non-null ticker identifies one `names` row.
+`names.ticker` is optional for scan candidates because not every money-making idea is a listed ticker. Coverage requires a ticker. Normalize it to uppercase with no surrounding whitespace before lookup or insert. A non-null ticker identifies one `names` row.
 
 `names.thesis_ref` is the current published thesis path, or null. A staged file under `theses/` is not published until Firstmate sets this pointer after the captain approves.
 
@@ -94,9 +102,9 @@ Firstmate writes the task row before handing work off. Reuse that task id in the
 
 **Scan.** Insert a `scans` row and a `scan` task. Hand both to the one scanning bot. After the report lands, if it pitches a winner, normalize its ticker and look it up before inserting `names`. With no match, insert a row at stage `candidate` with `scan_id` set and `researcher_id` null. With a match, reuse that row: keep `candidate` as `candidate`; keep `coverage` or `live` and its `researcher_id`; keep `declined` as `declined`. Set `scans.winner_name_id` to the inserted or reused row. A `coverage` or `live` winner stays with its researcher; do not take it under coverage again. If the scan has no winner, do not insert a name.
 
-**Specify a name.** Skip the scan. Normalize and look up its ticker before insert. Insert only when no row exists; otherwise reuse the row and follow its current stage. Then go to take-under-coverage.
+**Specify a name.** Skip the scan and require a ticker. Normalize and look it up before signing on a researcher or inserting a row. With no match, sign on one fresh researcher and insert one `names` row with `stage` `coverage` and `researcher_id` set in that same insert. With a `candidate` or `declined` match, reuse the row and follow take-under-coverage. With a `coverage` or `live` match, reuse its `researcher_id`. Never insert a second row for the ticker.
 
-**Take under coverage.** For `candidate`, sign on one fresh name researcher from `/home/box/agent-data/grok-factory/pack/GROK_BOT_RESEARCHER.md`, set `researcher_id`, and set stage `coverage`. For `declined`, sign on a fresh researcher, replace the retired `researcher_id`, and set stage `coverage`. For `coverage` or `live`, keep the stage and reuse its `researcher_id`; never sign on another researcher. File a `cover` task for the selected researcher. If a `candidate` already has a conflicting assignment, or a `coverage` or `live` row has a missing or conflicting assignment, block instead of creating another one.
+**Take under coverage.** Require a ticker before assigning coverage. Normalize it and look it up again; if the ticker belongs to another row, use that row instead of creating or retickering this one. For `candidate`, sign on one fresh name researcher from `/home/box/agent-data/grok-factory/pack/GROK_BOT_RESEARCHER.md`, then set the ticker, `researcher_id`, and stage `coverage` together. For `declined`, sign on a fresh researcher, replace the retired `researcher_id`, and set stage `coverage`. For `coverage` or `live`, keep the stage and reuse its `researcher_id`; never sign on another researcher. File a `cover` task for the selected researcher. If the ticker is missing, a `candidate` already has a conflicting assignment, or a `coverage` or `live` row has a missing or conflicting assignment, block instead of creating another one.
 
 **Discontinued.** Set stage `declined` and retire that agent. Reuse the same `names` row and memory tree. A later take-under-coverage gets a new agent.
 
