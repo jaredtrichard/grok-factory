@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS scans (
 
 CREATE TABLE IF NOT EXISTS names (
   id TEXT PRIMARY KEY,
-  ticker TEXT,
+  ticker TEXT COLLATE NOCASE UNIQUE,
   name TEXT NOT NULL,
   researcher_id TEXT,
   stage TEXT NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS tasks (
 
 `names.stage` is `candidate`, `coverage`, `live`, or `declined`. There is no watch stage.
 
-`names.ticker` is optional. Not every money-making idea is a listed ticker.
+`names.ticker` is optional. Not every money-making idea is a listed ticker. Normalize a ticker to uppercase with no surrounding whitespace before lookup or insert. A non-null ticker identifies one `names` row.
 
 `names.thesis_ref` is the current published thesis path, or null. A staged file under `theses/` is not published until Firstmate sets this pointer after the captain approves.
 
@@ -92,13 +92,13 @@ On Firstmate's first research intake, if `book.db` is missing, create it and run
 
 Firstmate writes the task row before handing work off. Reuse that task id in the crewmate message. The prompt carries the goal, acceptance criteria, and constraints.
 
-**Scan.** Insert a `scans` row and a `scan` task. Hand both to the one scanning bot. After the report lands, if it pitches a winner, insert `names` at stage `candidate` with `scan_id` set and `researcher_id` null, and set `scans.winner_name_id`. If the scan has no winner, do not insert a name.
+**Scan.** Insert a `scans` row and a `scan` task. Hand both to the one scanning bot. After the report lands, if it pitches a winner, normalize its ticker and look it up before inserting `names`. With no match, insert a row at stage `candidate` with `scan_id` set and `researcher_id` null. With a match, reuse that row: keep `candidate` as `candidate`; keep `coverage` or `live` and its `researcher_id`; keep `declined` as `declined`. Set `scans.winner_name_id` to the inserted or reused row. A `coverage` or `live` winner stays with its researcher; do not take it under coverage again. If the scan has no winner, do not insert a name.
 
-**Specify a name.** Skip the scan. Insert or reuse `names` and go to take-under-coverage.
+**Specify a name.** Skip the scan. Normalize and look up its ticker before insert. Insert only when no row exists; otherwise reuse the row and follow its current stage. Then go to take-under-coverage.
 
-**Take under coverage.** Set stage `coverage`. Sign on a fresh name researcher from `/home/box/agent-data/grok-factory/pack/GROK_BOT_RESEARCHER.md`. Set `researcher_id`. File a `cover` task. One researcher per name, forever.
+**Take under coverage.** For `candidate`, sign on one fresh name researcher from `/home/box/agent-data/grok-factory/pack/GROK_BOT_RESEARCHER.md`, set `researcher_id`, and set stage `coverage`. For `declined`, sign on a fresh researcher, replace the retired `researcher_id`, and set stage `coverage`. For `coverage` or `live`, keep the stage and reuse its `researcher_id`; never sign on another researcher. File a `cover` task for the selected researcher. If a `candidate` already has a conflicting assignment, or a `coverage` or `live` row has a missing or conflicting assignment, block instead of creating another one.
 
-**Discontinued.** Set stage `declined`. Do not reuse that agent. A later take-under-coverage on the same name gets a new agent.
+**Discontinued.** Set stage `declined` and retire that agent. Reuse the same `names` row and memory tree. A later take-under-coverage gets a new agent.
 
 **Thesis gate.** File a `decision` when the staged thesis needs approve or send-back. Publish by writing `names.thesis_ref` only after approve, then set stage `live`.
 

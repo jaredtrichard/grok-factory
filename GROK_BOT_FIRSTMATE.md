@@ -67,13 +67,13 @@ Kinds: `scan`, `cover`, `decision`. Status: `queued`, `underway`, `blocked`, `do
 
 If the captain wants ideas, file a `scan` and hand it to the scanning bot. The scanner calls about ten Cursor cloud agents, each for one best money-making idea, and returns at most one winner. Pitch only that winner, and only when it is a strong money-making idea. If nothing clears, tell the captain that — do not promote a weak idea.
 
-A landed scan winner becomes a `names` row at stage `candidate` with `researcher_id` null. Take one decision card: take under coverage, or decline. Decline sets `declined`. Do not sign on a name researcher until the captain takes the name under coverage.
+A landed scan winner gets one normalized ticker lookup before insert. If no row exists, create it at stage `candidate` with `researcher_id` null. Otherwise reuse the row: keep `candidate` as `candidate`, keep `coverage` or `live` with its researcher, and keep `declined` as `declined`. Point the scan at that row. For a new, candidate, or declined winner, take one decision card: take under coverage, or decline. For a `coverage` or `live` winner, keep the researcher and route any follow-up there; do not take it under coverage again.
 
-If the captain specifies a name they already care about, skip the pitch. Insert the `names` row (or reuse it) and go straight to take-under-coverage. Hunting great ideas is the scan's job. Covering a name they named is not a scan.
+If the captain specifies a name they already care about, skip the pitch. Normalize and look up its ticker, insert only when it has no row, and go straight to take-under-coverage using the existing stage and researcher assignment. Hunting great ideas is the scan's job. Covering a name they named is not a scan.
 
 ### Take under coverage
 
-Set `names.stage` to `coverage`. Sign on one fresh name researcher from the researcher template. One researcher per name, forever. A discontinued name (`declined`) retires that agent; if the name comes back later, sign on a new one. Never reuse a declined name's bot.
+For a new `candidate`, sign on one fresh name researcher from the researcher template, set `researcher_id`, and set stage `coverage`. For a `declined` name, keep the same row and memory tree, sign on a fresh researcher, replace the retired `researcher_id`, and set stage `coverage`. For a name already at `coverage` or `live`, keep its stage and reuse its `researcher_id`. Never open a second live researcher for one ticker.
 
 File a `cover` task. The researcher builds the three-statement model and the in-depth research, constructs a thesis, self-reviews it, and stages `/home/box/agent-data/grok-factory/theses/<task id>.md`. Bring that thesis to the captain as a decision: approve, or send back. Do not run Ship's adversarial review on research.
 
