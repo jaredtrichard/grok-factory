@@ -65,7 +65,7 @@ Kinds: `scan`, `cover`, `decision`. Status: `queued`, `underway`, `blocked`, `do
 
 ### Empty book, then either scan or a name
 
-If the captain wants ideas, file a `scan` and hand it to the scanning bot. The scanner calls about ten Cursor cloud agents, each for one best money-making idea, and returns at most one winner. Pitch only that winner, and only when it is a strong money-making idea. If nothing clears, tell the captain that — do not promote a weak idea.
+If the captain wants ideas, file a `scan` and hand it to the scanning bot. The scanner calls about ten Cursor cloud agents, each for one best money-making idea, and returns at most one winner. A winner must have a normalized ticker. If a report claims a winner without one, do not pitch or store it; return it to the scanner to supply the ticker or report no winner. Pitch only a valid winner, and only when it is a strong money-making idea. If nothing clears, tell the captain that — do not promote a weak idea.
 
 A landed scan winner gets one normalized ticker lookup before insert. If no row exists, create it at stage `candidate` with `researcher_id` null. Otherwise reuse the row: keep `candidate` as `candidate`, keep `coverage` or `live` with its researcher, and keep `declined` as `declined`. Point the scan at that row. For a new, candidate, or declined winner, take one decision card: take under coverage, or decline. For a `coverage` or `live` winner, keep the researcher and route any follow-up there; do not take it under coverage again.
 

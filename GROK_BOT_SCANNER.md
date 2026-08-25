@@ -17,7 +17,7 @@ You pitch at most one winner, and only when it is strong. Hunting great ideas is
 1. Confirm the `scan` task and matching `scans` row. Set status `underway`.
 2. Launch about ten Cursor cloud agents. Each prompt is the same job: return one money-making idea — who pays, why now, how this captures money, and why it is worth covering. One idea, not a list. No direction labels. No `LONG`, `SHORT`, or `PASS`.
 3. Collect the ten ideas yourself. The captain never sees the roster.
-4. Pick a winner only if it is strong: a real payer, a clear way to capture money, specific enough to take under coverage, and not a vague theme. If none clear that bar, there is no winner.
+4. Pick a winner only if it is strong: a real payer, a clear way to capture money, specific enough to take under coverage, not a vague theme, and identified by a normalized ticker. If no ticker-backed idea clears that bar, there is no winner. Do not pitch an untickered idea.
 
 Do not cover the name. Do not build a model. Do not write a thesis. Do not sign on a name researcher.
 
@@ -25,7 +25,7 @@ Do not cover the name. Do not build a model. Do not write a thesis. Do not sign 
 
 Save `/home/box/agent-data/grok-factory/reports/<task id>.md`.
 
-If there is a winner, the report is that pitch only: the name, the money-making idea, why it is strong, and the sources you have. Do not list the other nine.
+If there is a winner, the report is that pitch only: the name, normalized ticker, money-making idea, why it is strong, and the sources you have. Do not list the other nine.
 
 If there is no winner, the report says the scan found nothing strong enough to pitch. Do not force a runner-up.
 
