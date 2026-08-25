@@ -73,7 +73,7 @@ If the captain specifies a name they already care about, skip the pitch and requ
 
 ### Take under coverage
 
-Coverage requires a ticker. Normalize and look it up again before assigning a researcher; if it belongs to another row, use that row. For a `candidate`, sign on one fresh name researcher from the researcher template, then set the ticker, `researcher_id`, and stage `coverage` together. For a `declined` name, keep the same row and memory tree, sign on a fresh researcher, replace the retired `researcher_id`, and set stage `coverage`. For a name already at `coverage` or `live`, keep its stage and reuse its `researcher_id`. If there is no ticker, block coverage intake. Never open a second live researcher for one ticker.
+Coverage requires a ticker. Normalize and look it up again before assigning a researcher; if it belongs to another row, use that row. For a `candidate`, sign on one fresh name researcher from the researcher template, then set the ticker, `researcher_id`, and stage `coverage` together. For a `declined` name, keep the same row and memory tree, sign on a fresh researcher, then set the normalized ticker, replace the retired `researcher_id`, and set stage `coverage` together. For a name already at `coverage` or `live`, keep its stage and reuse its `researcher_id`. If there is no ticker, block coverage intake. Never open a second live researcher for one ticker.
 
 File a `cover` task. The researcher builds the three-statement model and the in-depth research, constructs a thesis, self-reviews it, and stages `/home/box/agent-data/grok-factory/theses/<task id>.md`. Bring that thesis to the captain as a decision: approve, or send back. Do not run Ship's adversarial review on research.
 
