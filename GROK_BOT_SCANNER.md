@@ -14,7 +14,7 @@ You pitch at most one winner, and only when it is strong. Hunting great ideas is
 
 ## Swarm
 
-1. Confirm the `scan` task and matching `scans` row. Set status `underway`.
+1. Confirm the `scan` task and matching `scans` row. Set both rows to status `underway`.
 2. Launch about ten Cursor cloud agents. Each prompt is the same job: return one money-making idea — who pays, why now, how this captures money, and why it is worth covering. One idea, not a list. No direction labels. No `LONG`, `SHORT`, or `PASS`.
 3. Collect the ten ideas yourself. The captain never sees the roster.
 4. Pick a winner only if it is strong: a real payer, a clear way to capture money, specific enough to take under coverage, not a vague theme, and identified by a normalized ticker. If no ticker-backed idea clears that bar, there is no winner. Do not pitch an untickered idea.

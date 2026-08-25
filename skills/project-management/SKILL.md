@@ -32,6 +32,7 @@ Sqlite routes. Memory is the mind.
 CREATE TABLE IF NOT EXISTS scans (
   id TEXT PRIMARY KEY,
   title TEXT NOT NULL,
+  status TEXT NOT NULL CHECK (status IN ('queued', 'underway', 'blocked', 'done', 'cancelled')),
   winner_name_id TEXT,
   report_ref TEXT,
   created_at INTEGER NOT NULL,
@@ -43,7 +44,7 @@ CREATE TABLE IF NOT EXISTS names (
   ticker TEXT COLLATE NOCASE UNIQUE NOT NULL,
   name TEXT NOT NULL,
   researcher_id TEXT,
-  stage TEXT NOT NULL,
+  stage TEXT NOT NULL CHECK (stage IN ('candidate', 'coverage', 'live', 'declined')),
   thesis_ref TEXT,
   scan_id TEXT,
   created_at INTEGER NOT NULL,
@@ -60,12 +61,12 @@ CREATE TABLE IF NOT EXISTS names (
 
 CREATE TABLE IF NOT EXISTS tasks (
   id TEXT PRIMARY KEY,
-  kind TEXT NOT NULL,
+  kind TEXT NOT NULL CHECK (kind IN ('scan', 'cover', 'decision')),
   title TEXT NOT NULL,
   prompt TEXT NOT NULL,
   name_id TEXT,
   scan_id TEXT,
-  status TEXT NOT NULL,
+  status TEXT NOT NULL CHECK (status IN ('queued', 'underway', 'blocked', 'done', 'cancelled')),
   gate_kind TEXT,
   gate_ref TEXT,
   result TEXT,
@@ -100,7 +101,7 @@ On Firstmate's first research intake, if `book.db` is missing, create it and run
 
 Firstmate writes the task row before handing work off. Reuse that task id in the crewmate message. The prompt carries the goal, acceptance criteria, and constraints.
 
-**Scan.** Insert a `scans` row and a `scan` task. Hand both to the one scanning bot. A winner must have a normalized ticker. If the report claims a winner without one, do not pitch or insert it; return it to the scanner to supply the ticker or report no winner. For a valid winner, look up its ticker before inserting `names`. With no match, insert a row at stage `candidate` with `scan_id` set and `researcher_id` null. With a match, reuse that row: keep `candidate` as `candidate`; keep `coverage` or `live` and its `researcher_id`; keep `declined` as `declined`. Set `scans.winner_name_id` to the inserted or reused row. A `coverage` or `live` winner stays with its researcher; do not take it under coverage again. If the scan has no winner, do not insert a name.
+**Scan.** Insert a `scans` row and a `scan` task, both at status `queued`. Hand both to the one scanning bot. A winner must have a normalized ticker. If the report claims a winner without one, do not pitch or insert it; return it to the scanner to supply the ticker or report no winner. For a valid winner, look up its ticker before inserting `names`. With no match, insert a row at stage `candidate` with `scan_id` set and `researcher_id` null. With a match, reuse that row: keep `candidate` as `candidate`; keep `coverage` or `live` and its `researcher_id`; keep `declined` as `declined`. Set `scans.winner_name_id` to the inserted or reused row. A `coverage` or `live` winner stays with its researcher; do not take it under coverage again. If the scan has no winner, do not insert a name.
 
 **Specify a name.** Skip the scan and require a ticker. Normalize and look it up before signing on a researcher or inserting a row. With no match, sign on one fresh researcher and insert one `names` row with `stage` `coverage` and `researcher_id` set in that same insert. With a `candidate` or `declined` match, reuse the row and follow take-under-coverage. With a `coverage` or `live` match, reuse its `researcher_id`. Never insert a second row for the ticker.
 

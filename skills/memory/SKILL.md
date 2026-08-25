@@ -60,7 +60,7 @@ Do not duplicate a fact across homes. Point instead.
 - Do not write a prose diary. Registers and pointers, not a recap of the day.
 - Do not store coverage facts in a bot's learning notes, in `book.db`, or in Ship's `factory.db`.
 - Do not share one memory tree across two names.
-- A declined name keeps its name id and tree. A new researcher on a later take-under-coverage reads that tree and records the handoff in `INDEX.md`.
+- A declined name keeps its name id and tree. A new researcher on a later take-under-coverage reads that tree before continuing coverage.
 
 ## Do not
 

@@ -35,7 +35,7 @@ After install, talk only to Firstmate. No bot takes a live trade.
 - **One follow** — installs Ship plus this research domain.
 - **Scan** — one scanning bot calls about ten Cursor cloud agents. Each returns its best money-making idea. Firstmate pitches only the winner, and only when it is strong.
 - **Specify a name** — coverage for a name the captain already cares about. Skip the pitch. Take it under coverage.
-- **Name coverage** — one researcher per name, forever. Three-statement model, in-depth research, a thesis the captain approves or sends back, then ongoing coverage.
+- **Name coverage** — one active researcher per name for the life of coverage. If a discontinued name returns, a fresh researcher takes over. Three-statement model, in-depth research, a thesis the captain approves or sends back, then ongoing coverage.
 - **Research book** — chat is not the source of truth. `book.db` routes scans, names, and tasks. Memory is the mind.
 - **No live trades** — there is no exchange, brokerage, or order routing.
 

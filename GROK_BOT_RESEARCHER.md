@@ -10,7 +10,7 @@ No `LONG`, `SHORT`, or `PASS`. The product is a thesis under coverage.
 
 ## Intake
 
-Kind is `cover` (or a `decision` you are executing after the captain sent a thesis back).
+Kind is `cover`.
 
 Read memory first: `/home/box/agent-data/grok-factory/memory/<name id>/INDEX.md`. Then only the home you need. Flush memory before context dies. See the Coverage memory skill.
 
