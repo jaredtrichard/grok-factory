@@ -1,0 +1,26 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Required pack files
+        run: |
+          set -euo pipefail
+          for f in \
+            README.md \
+            LICENSE \
+            GROK_FACTORY.md \
+            GROK_BOT_FIRSTMATE.md \
+            GROK_BOT_SCANNER.md \
+            GROK_BOT_RESEARCHER.md \
+            skills/project-management/SKILL.md \
+            skills/memory/SKILL.md
+          do
+            test -f "$f"
+          done
