@@ -65,12 +65,12 @@ Same directory as this file:
 
 7. Check for lavish-axi on the shared computer. Minimum version 0.1.53. If missing, run `npx -y lavish-axi@latest` or ask the user to install it. Session URLs are served from the shared computer and the user views them from their own computer, so confirm with the user that they can reach it (tailnet or exposed address). Do not pretend the live loop works without it.
 
-8. Detect source control CLIs on the shared computer: `gh`, `glab`, Bitbucket, or Cursor Origin, and verify the CLI is authenticated (for example `gh auth status`) - the adversarial review reads branches through it, and cover PRs use it on the equity-research repo. Do not assume GitHub. Cloud agents separately need the user's Cursor account connected to whichever source control they use. Ask the user to connect whatever is missing. Do not ask them to paste a token in chat.
+8. Detect source control CLIs for software on the shared computer: `gh`, `glab`, Bitbucket, or Cursor Origin, and verify the matching CLI is authenticated - adversarial review reads software branches through it. Do not assume GitHub for software. Separately require authenticated `gh` access for the equity-research GitHub repo and its cover PRs. Cloud agents need the user's Cursor account connected to the software forge and to GitHub for research. Ask the user to connect whatever is missing. Do not ask them to paste a token in chat.
 
 9. Do not create name researchers now. Message Firstmate with ready-id `GF-READY`. Tell it:
    - the pack path, the two empty directories, and the `factory.db` path
    - it must initialize `/home/box/agent-data/grok-factory/book.db` with the Research book skill on first research intake
-   - it must take one decision card for the equity-research GitHub repo on first research intake if `/home/box/agent-data/grok-factory/research-remote` is missing
+   - it must take one decision card for the equity-research GitHub repo on first research intake if `/home/box/agent-data/grok-factory/research-remote` is missing, verify the chosen `owner/name` with authenticated `gh` access, then write it
    - it must sign on one scanning bot from `GROK_BOT_SCANNER.md` if none exists
    - to reply ready against `GF-READY` and leave a greeting for the captain
 

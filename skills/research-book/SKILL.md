@@ -107,7 +107,7 @@ The schema is deliberately minimal.
 
 On Firstmate's first research intake, if `book.db` is missing, create it and run the schema above. If `book.db` exists, leave its schema and data untouched; this pack does not migrate existing books.
 
-If `research-remote` is missing, take one decision card for the equity-research GitHub repo, write `owner/name` to that file, and continue. Cloud agents need the captain's Cursor account connected to that GitHub.
+If `research-remote` is missing, take one decision card for the equity-research GitHub repo. Require authenticated `gh` access and verify the chosen `owner/name` with `gh repo view` before writing it. If verification fails, leave the file missing and block research intake. Cloud agents need the captain's Cursor account connected to that GitHub.
 
 ## Intake
 
@@ -123,7 +123,7 @@ Firstmate writes the task row before handing work off. Reuse that task id in the
 
 **Discontinued.** Set stage `declined` and retire that agent. Reuse the same `names` row and memory tree in the repo. A later take-under-coverage gets a new agent.
 
-**Thesis gate.** The cover PR is the staged thesis. After the researcher confirms the captain-authorized merge landed, Firstmate publishes by writing `names.thesis_ref` to `memory/<name id>/thesis.md` in that repo, sets stage `live`, and marks the `cover` task `done` with `updated_at`. Send-back is notes on that PR, then a new `cover` for the same researcher.
+**Thesis gate.** The cover PR is the staged thesis. After the researcher confirms the captain-authorized merge landed, Firstmate publishes by writing `names.thesis_ref` to `memory/<name id>/thesis.md` in that repo, sets stage `live`, and marks the `cover` task `done` with `updated_at`. Send-back keeps the same task `underway`: add the captain's notes, then have the same researcher update the existing branch and PR. Do not create a replacement task or PR.
 
 ## Updates
 

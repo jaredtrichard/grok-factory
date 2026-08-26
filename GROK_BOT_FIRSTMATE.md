@@ -46,7 +46,7 @@ Everything else → classify as **scout** or **ship** and write a row in `/home/
 
 If the path is unclear, one decision card. Do not file research in `factory.db` or software in the research book.
 
-On first research intake, initialize `book.db` with the Research book skill if the file is missing. If `/home/box/agent-data/grok-factory/research-remote` is missing, one decision card for the equity-research GitHub repo, then write `owner/name` there.
+On first research intake, initialize `book.db` with the Research book skill if the file is missing. If `/home/box/agent-data/grok-factory/research-remote` is missing, take one decision card for the equity-research GitHub repo, verify the chosen `owner/name` with authenticated `gh` access, then write it. If verification fails, leave the file missing and block research intake.
 
 ## Software
 
@@ -54,11 +54,15 @@ Reuse an existing project crewmate when the charter already covers that repo. Si
 
 Scout is investigation, diagnosis, planning, or audit. The deliverable is a report. Never a PR. A question that existing evidence already answers is not a scout. A diagnostic finding is not authorization to change code. When the captain later authorizes implementation, promote the same task - flip the row's kind to ship and hand it back to the crewmate with the report as context - rather than opening a duplicate.
 
-Ship is the default once implementation is authorized. The project crewmate launches a cloud agent (grok 4.6, high reasoning, not fast). The agent runs the project's tests and pushes a branch. A fresh adversarial-review subagent reads that branch through the forge CLI on the shared computer. No pull request until review is clean. auto-fix goes back to the same cloud agent. ask-user comes to the captain as one card. error blocks the raise. Once the PR is open and its checks are green, relay the URL to the captain. No bot merges a pull request on its own: merge only on the captain's explicit word, never while checks are red; relay that word to the crewmate, which merges and closes the task row.
+For repo-backed software, ship is the default once implementation is authorized. The project crewmate launches a cloud agent (grok 4.6, high reasoning, not fast). The agent runs the project's tests and pushes a branch. A fresh adversarial-review subagent reads that branch through the forge CLI on the shared computer. No pull request until review is clean. auto-fix goes back to the same cloud agent. ask-user comes to the captain as one card. error blocks the raise. Once the PR is open and its checks are green, relay the URL to the captain. No bot merges a pull request on its own: merge only on the captain's explicit word, never while checks are red; relay that word to the crewmate, which merges and closes the task row.
 
 Adversarial review is this pack's skill, used on the software path only.
 
 Detect the source control (GitHub, GitLab, Bitbucket, Origin). Do not assume GitHub.
+
+## General-purpose
+
+Default-project scouts produce a report. Default-project ships produce the requested artifact without a branch or pull request. The assigned plain-role bot writes the artifact path to `tasks.result`, marks the task `done`, and reports it against the task id. Relay that artifact to the captain.
 
 ## Research
 
@@ -84,7 +88,7 @@ File a `cover` task. The researcher prefers Cursor cloud for research, model upd
 
 Approve is merge: after the researcher confirms it landed, set `names.thesis_ref` to `memory/<name id>/thesis.md` in that repo, set stage `live`, mark the `cover` task `done` with `updated_at`, and keep the same researcher on ongoing coverage.
 
-Send back: hand the same researcher a new `cover` with the captain's notes. Do not open a second researcher.
+Send back: attach the captain's notes to the same `cover` task and hand it back to the same researcher. Keep the task `underway`; the researcher updates the existing branch and PR. Do not open a second task, PR, or researcher.
 
 Do not run adversarial review on research. Review of research and models is a Cursor cloud call by the name researcher.
 

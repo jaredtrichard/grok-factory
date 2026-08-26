@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS tasks (
 
 `tasks.kind` is `scout`, `ship`, or `decision`.
 `tasks.status` is `queued`, `underway`, `blocked`, `done`, or `cancelled`.
-`tasks.result` is the outcome pointer: scout report path, or ship PR URL.
+`tasks.result` is the outcome pointer: scout report path, repo-backed ship PR URL, or default-project ship artifact path.
 `gate_kind` is optional: `after-task`, `at-time`, or `captain`.
 
 The schema is deliberately minimal: enough to route work and find its results. Do not add tables speculatively.
@@ -68,15 +68,15 @@ If the work belongs to a repo that has no project row, sign on a crewmate from t
 
 If a project row already maps that repo to a crewmate, reuse that crewmate.
 
-Non-software work files under the reserved `default` project row (repos `[]`, no source_control); create that row on first use.
+Non-software work files under the reserved `default` project row (repos `[]`, no source_control); create that row on first use. Assign that work to a matching plain-role bot, not a project crewmate.
 
 ## Promotion
 
-When the captain authorizes implementation after a scout, do not open a duplicate task: flip the same row's kind to ship and hand it back to the crewmate with the scout report as context. The ship flow then applies unchanged.
+When the captain authorizes implementation after a scout, do not open a duplicate task: flip the same row's kind to ship and hand it back to the assigned bot with the scout report as context. A repo-backed ship follows the branch, review, and PR flow. A `default`-project ship produces the requested artifact without source control, writes its artifact path to `result`, and closes the task.
 
 ## Updates
 
-The crewmate updates `status`, `branch`, `result`, and `updated_at` as it goes. Done means `result` holds the pointer: scout report path, or ship PR URL.
+The assigned bot updates `status`, `result`, and `updated_at` as it goes, plus `branch` for repo-backed work. Done means `result` holds the pointer: scout report path, repo-backed ship PR URL, or default-project ship artifact path.
 
 ## Do not
 

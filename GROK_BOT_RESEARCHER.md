@@ -27,7 +27,7 @@ The node map lives in this coverage: who pays whom, where value sits, what would
 
 `cover` is the verb. The PR is how the files land.
 
-If the captain sends the thesis back, revise from their notes on a new `cover`. Stage a new branch and PR under the new task id. Same name. Same you.
+If the captain sends the thesis back, revise under the same `cover` task. Push the revisions to the existing branch so the existing PR updates, and keep its URL in `result`. Same task. Same PR. Same name. Same you.
 
 Ongoing coverage is more `cover` work: new evidence, same model tree, same memory, a new PR when the view moved.
 
