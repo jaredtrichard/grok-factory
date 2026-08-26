@@ -1,15 +1,16 @@
 # Grok Factory
 
-Public Grok Bot pack. Sits on Grok Ship and adds a research domain.
+Standalone Grok Bot pack. Software, research, and general-purpose from this repo only.
 
 - Installer: `GROK_FACTORY.md`
-- Ship (read-only OS): https://github.com/kunchenguid/grok-ship
-- Research data on the shared computer: `/home/box/agent-data/grok-factory/`
-- Software backlog stays in Ship's `/home/box/agent-data/grok-ship/factory.db`
+- Data on the shared computer: `/home/box/agent-data/grok-factory/`
+- Software backlog: `factory.db`. Research book: `book.db`.
+- Equity-research GitHub repo is the durable store for research and models; `research-remote` holds `owner/name`.
 
-This repo is markdown. Do not copy Ship files into it. Do not add a JS toolchain unless the pack stops being markdown.
+This repo is markdown. Do not add a JS toolchain unless the pack stops being markdown.
+Do not point installers or charters at an outside pack.
 
-Product vocabulary is money-making idea, thesis, and coverage. Do not introduce `LONG`, `SHORT`, `PASS`, or a watch stage.
+Product vocabulary is money-making idea, thesis, and coverage. Research verb is `cover`; the PR is how files land.
 
 ## Maintaining this file
 
