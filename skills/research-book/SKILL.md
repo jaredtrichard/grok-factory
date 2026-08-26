@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS tasks (
 
 `scans.id` matches the `scan` task id. Research task ids use a `GF-` prefix.
 
-The schema is deliberately minimal. Do not add execution, portfolio, or trade tables.
+The schema is deliberately minimal.
 
 ## Setup
 
@@ -123,11 +123,11 @@ Firstmate writes the task row before handing work off. Reuse that task id in the
 
 **Discontinued.** Set stage `declined` and retire that agent. Reuse the same `names` row and memory tree in the repo. A later take-under-coverage gets a new agent.
 
-**Thesis gate.** The cover PR is the staged thesis. After the captain merges, publish by writing `names.thesis_ref` to `memory/<name id>/thesis.md` in that repo, then set stage `live`. Send-back is notes on that PR, then a new `cover` for the same researcher.
+**Thesis gate.** The cover PR is the staged thesis. After the researcher confirms the captain-authorized merge landed, Firstmate publishes by writing `names.thesis_ref` to `memory/<name id>/thesis.md` in that repo, sets stage `live`, and marks the `cover` task `done` with `updated_at`. Send-back is notes on that PR, then a new `cover` for the same researcher.
 
 ## Updates
 
-The scanning bot or name researcher updates `status`, `result`, and `updated_at` as it works. Firstmate owns `names.stage`, `names.researcher_id`, and `names.thesis_ref`.
+The scanning bot or name researcher updates `status`, `result`, and `updated_at` as it works. Firstmate owns `names.stage`, `names.researcher_id`, and `names.thesis_ref`, and closes a `cover` task after its merge is confirmed.
 
 ## Do not
 

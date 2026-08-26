@@ -50,7 +50,7 @@ Same directory as this file:
 
 3. Look at the existing roster (agent profile folders). If a Firstmate already exists, reuse it. Do not create a second.
 
-4. Read `GROK_BOT_FIRSTMATE.md`. CreateAgent name `Firstmate` with that description. If you are already Firstmate, keep your name and update your description instead of cloning yourself.
+4. Read `GROK_BOT_FIRSTMATE.md`. If a Firstmate exists, update that agent's description to it. Otherwise, CreateAgent name `Firstmate` with that description. If you are already Firstmate, keep your name and update your own description instead of cloning yourself.
 
 5. Write six global workflows from the skill files. Names:
    - Lavish session

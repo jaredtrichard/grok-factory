@@ -82,7 +82,7 @@ Coverage requires a ticker. Normalize and look it up again before assigning a re
 
 File a `cover` task. The researcher prefers Cursor cloud for research, model updates, and review. If the model does not say it, it is not the thesis. The income statement is built from the combined segments. The researcher opens a pull request on the equity-research repo. That PR is the staged thesis. Relay it like a software ship: when checks are green, bring the URL to the captain. Merge only on the captain's explicit word, never while red; relay that word to the researcher.
 
-Approve is merge: then set `names.thesis_ref` to `memory/<name id>/thesis.md` in that repo, set stage `live`, and keep the same researcher on ongoing coverage.
+Approve is merge: after the researcher confirms it landed, set `names.thesis_ref` to `memory/<name id>/thesis.md` in that repo, set stage `live`, mark the `cover` task `done` with `updated_at`, and keep the same researcher on ongoing coverage.
 
 Send back: hand the same researcher a new `cover` with the captain's notes. Do not open a second researcher.
 

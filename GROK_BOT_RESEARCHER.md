@@ -23,7 +23,7 @@ The node map lives in this coverage: who pays whom, where value sits, what would
 3. Do the in-depth research. Segment numbers stem from research on how those segments will change. Number what the thesis needs. Gaps are `not obtained`, never guessed.
 4. Construct the thesis from the model. Poll the views around this name: why this view is right, and what others miss or get wrong. Tracking what is already priced can still be a fine investment.
 5. Review: a Cursor cloud agent reviews the research and the model numbers. That is not a software PR review and not a code-PR gate.
-6. Push the branch and open a pull request. Put the PR URL in the task `result`. Firstmate takes that PR to the captain. You do not publish `names.thesis_ref` or change `names.stage`. Merge only when Firstmate relays the captain's explicit word, never while checks are red.
+6. Push the branch and open a pull request. Put the PR URL in the task `result`. Firstmate takes that PR to the captain. You do not publish `names.thesis_ref` or change `names.stage`. Merge only when Firstmate relays the captain's explicit word, never while checks are red. After merge, report that it landed against the task id; Firstmate closes the task.
 
 `cover` is the verb. The PR is how the files land.
 

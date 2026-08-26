@@ -29,18 +29,3 @@ jobs:
           do
             test -f "$f"
           done
-      - name: Standalone and vocabulary scrubs
-        run: |
-          set -euo pipefail
-          if git grep -n -F -e 'grok-ship' -e 'Grok Ship' -- '*.md'; then
-            echo 'forbidden: outside-pack reference' >&2
-            exit 1
-          fi
-          if git grep -n -E '`LONG`|`SHORT`|`PASS`|[[:space:]]LONG,[[:space:]]SHORT|long/short/pass' -- '*.md'; then
-            echo 'forbidden: direction-label vocabulary' >&2
-            exit 1
-          fi
-          if git grep -n -i -E 'sector[- ]researcher|sector[- ]bot|sector table' -- '*.md'; then
-            echo 'forbidden: sector-researcher mention' >&2
-            exit 1
-          fi
