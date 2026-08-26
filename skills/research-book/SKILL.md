@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS tasks (
 
 `tasks.status` is `queued`, `underway`, `blocked`, `done`, or `cancelled`.
 
-`tasks.result` is the outcome pointer: scan report path, or cover PR URL.
+`tasks.result` is the outcome pointer: scan report path, cover PR URL, or the captain's answer to a decision.
 
 `gate_kind` is optional: `after-task`, `at-time`, or `captain`.
 
@@ -113,13 +113,15 @@ If `research-remote` is missing, take one decision card for the equity-research 
 
 Firstmate writes the task row before handing work off. Reuse that task id in the crewmate message. The prompt carries the goal, acceptance criteria, and constraints.
 
+**Decision.** Before showing any research choice card to the captain, insert a `decision` task with the exact question and options in `prompt`, status `blocked`, and `gate_kind` `captain`; set `name_id`, `scan_id`, and `gate_ref` when applicable. After the captain answers, write the answer to `result`, set status `done` with `updated_at`, then apply the decision. If the card is withdrawn without an answer, set the task `cancelled`.
+
 **Scan.** Insert a `scans` row and a `scan` task, both at status `queued`. Hand both to the one scanning bot. A winner must have a normalized ticker. If the report claims a winner without one, do not pitch or insert it; return it to the scanner to supply the ticker or report no winner. For a valid winner, look up its ticker before inserting `names`. With no match, insert a row at stage `candidate` with `scan_id` set and `researcher_id` null. With a match, reuse that row: keep `candidate` as `candidate`; keep `coverage` or `live` and its `researcher_id`; keep `declined` as `declined`. Set `scans.winner_name_id` to the inserted or reused row. A `coverage` or `live` winner stays with its researcher; do not take it under coverage again. If the scan has no winner, do not insert a name.
 
 **Specify a name.** Skip the scan and require a ticker. Normalize and look it up before signing on a researcher or inserting a row. With no match, sign on one fresh researcher and insert one `names` row with `stage` `coverage` and `researcher_id` set in that same insert. With a `candidate` or `declined` match, reuse the row and follow take-under-coverage. With a `coverage` or `live` match, reuse its `researcher_id`. Never insert a second row for the ticker.
 
-**Take under coverage.** Require a ticker before assigning coverage. Normalize it and look it up again; if the ticker belongs to another row, use that row instead of creating or retickering this one. For `candidate`, sign on one fresh name researcher from `/home/box/agent-data/grok-factory/pack/GROK_BOT_RESEARCHER.md`, then set the ticker, `researcher_id`, and stage `coverage` together. For `declined`, sign on a fresh researcher, then set the normalized ticker, replace the retired `researcher_id`, and set stage `coverage` together. For `coverage` or `live`, keep the stage and reuse its `researcher_id`; never sign on another researcher. File a `cover` task for the selected researcher. If the ticker is missing, a `candidate` already has a conflicting assignment, or a `coverage` or `live` row has a missing or conflicting assignment, block instead of creating another one.
+**Take under coverage.** Require a ticker before assigning coverage. Normalize it and look it up again; if the ticker belongs to another row, use that row instead of creating or retickering this one. For `candidate`, sign on one fresh name researcher from `/home/box/agent-data/grok-factory/pack/GROK_BOT_RESEARCHER.md`, then set the ticker, `researcher_id`, and stage `coverage` together. For `declined`, sign on a fresh researcher, then set the normalized ticker, replace the retired `researcher_id`, and set stage `coverage` together. For `coverage` or `live`, keep the stage and reuse its `researcher_id`; never sign on another researcher. File a `cover` task for the selected researcher through the per-name queue below. If the ticker is missing, a `candidate` already has a conflicting assignment, or a `coverage` or `live` row has a missing or conflicting assignment, block instead of creating another one.
 
-**Cover.** The researcher updates that name in the equity-research repo: branch, Cursor cloud review of the research and model, then a pull request. `cover` is the research verb. The PR is how the files land. Record the PR URL in `tasks.result`.
+**Cover.** Before inserting a cover, query that name's `queued`, `underway`, and `blocked` cover tasks. With none, insert the new cover at `queued` and hand it to the researcher; the researcher moves it to `underway`. With any nonterminal cover, insert the new cover at `queued` with `gate_kind` `after-task` and `gate_ref` set to the newest nonterminal cover id, and do not hand it off. Firstmate releases covers in order only after every earlier cover for the name is `done` or `cancelled`. Send-back revisions reuse the current cover task and PR rather than entering this queue. The researcher updates that name in the equity-research repo: branch, Cursor cloud review of the research and model, then a pull request. `cover` is the research verb. The PR is how the files land. Record the PR URL in `tasks.result`.
 
 **Discontinued.** First have the researcher stop every in-flight cloud job for each `queued`, `underway`, or `blocked` `cover` task for that name and wait until every job is terminal. After the researcher confirms no job can still publish, have them recheck the equity-research repo, close every open PR for those tasks, and recheck that none remain. Only then set each task to `cancelled` with `updated_at`, set the name stage `declined`, and retire the researcher. Reuse the same `names` row and memory tree in the repo. A later take-under-coverage gets a new agent.
 
@@ -127,7 +129,7 @@ Firstmate writes the task row before handing work off. Reuse that task id in the
 
 ## Updates
 
-The scanning bot or name researcher updates `status`, `result`, and `updated_at` as it works. Firstmate owns `names.stage`, `names.researcher_id`, and `names.thesis_ref`, closes a `cover` task after its merge is confirmed, and cancels nonterminal cover tasks only after their cloud jobs are terminal and their PRs are rechecked closed on discontinuation.
+The scanning bot or name researcher updates `status`, `result`, and `updated_at` as it works. Firstmate owns `names.stage`, `names.researcher_id`, and `names.thesis_ref`, closes a `cover` task after its merge is confirmed, releases the next queued cover only after earlier covers for that name are terminal, and cancels nonterminal cover tasks only after their cloud jobs are terminal and their PRs are rechecked closed on discontinuation.
 
 ## Do not
 
