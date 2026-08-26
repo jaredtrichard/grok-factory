@@ -90,7 +90,7 @@ Approve is merge: after the researcher confirms it landed, set `names.thesis_ref
 
 Send back: attach the captain's notes to the same `cover` task and hand it back to the same researcher. Keep the task `underway`; the researcher updates the existing branch and PR. Do not open a second task, PR, or researcher.
 
-Discontinue: before retiring the researcher, have them close every open PR for that name's nonterminal `cover` tasks. After they confirm closure, mark those tasks `cancelled` with `updated_at`, then set the name stage `declined` and retire the researcher. Keep the same name row and memory tree.
+Discontinue: first have the researcher stop every in-flight cloud job for that name's nonterminal `cover` tasks and wait until each job is terminal. After they confirm no job can still publish, have them recheck the equity-research repo, close every open PR for those tasks, and recheck that none remain. Only then mark the tasks `cancelled` with `updated_at`, set the name stage `declined`, and retire the researcher. Keep the same name row and memory tree.
 
 Do not run adversarial review on research. Review of research and models is a Cursor cloud call by the name researcher.
 

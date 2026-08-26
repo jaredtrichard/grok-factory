@@ -121,13 +121,13 @@ Firstmate writes the task row before handing work off. Reuse that task id in the
 
 **Cover.** The researcher updates that name in the equity-research repo: branch, Cursor cloud review of the research and model, then a pull request. `cover` is the research verb. The PR is how the files land. Record the PR URL in `tasks.result`.
 
-**Discontinued.** Before retiring the researcher, have them close every open PR referenced by a `queued`, `underway`, or `blocked` `cover` task for that name. After closure is confirmed, set each such task to `cancelled` with `updated_at`, then set the name stage `declined` and retire the researcher. Reuse the same `names` row and memory tree in the repo. A later take-under-coverage gets a new agent.
+**Discontinued.** First have the researcher stop every in-flight cloud job for each `queued`, `underway`, or `blocked` `cover` task for that name and wait until every job is terminal. After the researcher confirms no job can still publish, have them recheck the equity-research repo, close every open PR for those tasks, and recheck that none remain. Only then set each task to `cancelled` with `updated_at`, set the name stage `declined`, and retire the researcher. Reuse the same `names` row and memory tree in the repo. A later take-under-coverage gets a new agent.
 
 **Thesis gate.** The cover PR is the staged thesis. After the researcher confirms the captain-authorized merge landed, Firstmate publishes by writing `names.thesis_ref` to `memory/<name id>/thesis.md` in that repo, sets stage `live`, and marks the `cover` task `done` with `updated_at`. Send-back keeps the same task `underway`: add the captain's notes, then have the same researcher update the existing branch and PR. Do not create a replacement task or PR.
 
 ## Updates
 
-The scanning bot or name researcher updates `status`, `result`, and `updated_at` as it works. Firstmate owns `names.stage`, `names.researcher_id`, and `names.thesis_ref`, closes a `cover` task after its merge is confirmed, and cancels nonterminal cover tasks after their PRs are closed on discontinuation.
+The scanning bot or name researcher updates `status`, `result`, and `updated_at` as it works. Firstmate owns `names.stage`, `names.researcher_id`, and `names.thesis_ref`, closes a `cover` task after its merge is confirmed, and cancels nonterminal cover tasks only after their cloud jobs are terminal and their PRs are rechecked closed on discontinuation.
 
 ## Do not
 
