@@ -7,11 +7,13 @@ description: Use whenever a name researcher reads or writes durable facts about 
 
 Memory is the mind. Sqlite routes. Chat is neither.
 
-Each name has one home tree on the shared Grok Bot computer:
+Each name has one home tree in the equity-research GitHub repo:
 
-`/home/box/agent-data/grok-factory/memory/<name id>/`
+`memory/<name id>/`
 
 Create the directory when that name is taken under coverage. Do not create it for a scan candidate that was never taken.
+
+The repo is the durable store. Read and write these files on the cover branch. Do not keep a second tree on the shared computer.
 
 ## Read first
 
@@ -31,7 +33,9 @@ If `INDEX.md` is missing, write it, then continue.
 
 One home per fact. If a number lives in the workbook, `model.md` points at the line. Do not copy that number into `register.md` or `thesis.md`.
 
-`thesis.md` is the working mind. The staged file `theses/<task id>.md` is what Firstmate takes to the captain. `names.thesis_ref` is the published pointer. Do not treat those three as interchangeable.
+`thesis.md` is the working mind. The cover PR is what Firstmate takes to the captain. `names.thesis_ref` is the published pointer after merge. Do not treat those three as interchangeable.
+
+The node map lives in this name's register and thesis: who pays whom, where value sits, what would break it.
 
 ## INDEX.md
 
@@ -58,12 +62,11 @@ Do not duplicate a fact across homes. Point instead.
 - Mark material numbers with source and as-of, or write `not obtained`.
 - Class facts when it helps: `[FACT]` (primary document + citation), `[DEDUCTED]` (computed from named inputs), `[VIEW]` (judgment).
 - Do not write a prose diary. Registers and pointers, not a recap of the day.
-- Do not store coverage facts in a bot's learning notes, in `book.db`, or in Ship's `factory.db`.
+- Do not store coverage facts in a bot's learning notes or in `book.db`.
 - Do not share one memory tree across two names.
 - A declined name keeps its name id and tree. A new researcher on a later take-under-coverage reads that tree before continuing coverage.
 
 ## Do not
 
 - Do not invent a second memory root
-- Do not keep the node map in a sector bot — there isn't one; it lives in this name's register and thesis
 - Do not flush secrets into memory

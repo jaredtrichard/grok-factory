@@ -5,66 +5,73 @@ The user just needs to tell any bot in their Grok Bot: follow this file.
 
 This file is an installer. Do not summarize.
 
-Grok Factory sits on Grok Ship and adds a research domain. One Grok Bot. One Firstmate. Three paths: software (Ship), research (this pack), general-purpose (Ship default). Software `ship` means a PR. Research does not open PRs.
+Grok Factory is a standalone pack. One Grok Bot. One Firstmate. Software, research, and everything else. Software `ship` means a PR. Research `cover` updates a name in the equity-research GitHub repo; the PR is how those files land.
 
 ## What you are installing
 
-- Grok Ship, if it is not already on this computer (software factory + general-purpose)
-- This research domain
-- One Firstmate the captain talks to from then on (reuse Ship's; do not create a second)
+- A Firstmate the captain talks to from then on
+- Global skills: lavish-session, adversarial-review, project-management, ahoy, Research book, Coverage memory
+- A local sqlite database for software projects and tasks
+- A crewmate template for later, per software project
 - A scanning-bot template and a name-researcher template
-- Research skills: Research book, Coverage memory
-- Empty directories for scan pitches, models, staged theses, and per-name memory
+- Empty directories for scan pitches and software scout reports
 - A research book at `/home/box/agent-data/grok-factory/book.db`, initialized by Firstmate on first research intake
 
-Do not pre-create name researchers. Firstmate signs on the scanning bot on ready if none exists.
+Do not pre-create name researchers or project crewmates. Firstmate signs on the scanning bot on ready if none exists.
 
 ## The three computers
 
-Same split as Ship. Do not invent a fourth.
-
-- The captain's computer: their own machine. Bots never execute here.
-- The shared Grok Bot computer: the persistent cloud VM. Every bot, both databases, reviews, browser work, EDGAR, and lavish-axi run here.
-- Cursor cloud agents: ephemeral VMs. Ship uses them for software work. This pack uses them for the scan swarm only. Name coverage does not call cloud.
+- The user's computer: their own machine. Bots never execute here.
+- The shared Grok Bot computer: a persistent cloud VM that runs all agents. Everything a bot runs - checks, both databases, reviews, lavish-axi - runs here.
+- Cursor cloud agents: ephemeral cloud VMs that spin up on demand. Software project crewmates, the scanning bot, and name researchers call them. Firstmate does not.
 
 ## Files in this pack
 
 Same directory as this file:
 
-- `GROK_BOT_FIRSTMATE.md` — Firstmate charter (factory: software + research + general-purpose)
+- `GROK_BOT_FIRSTMATE.md` — Firstmate charter
+- `GROK_BOT_CREWMATE.md` — per-project software crewmate charter
 - `GROK_BOT_SCANNER.md` — scanning-bot charter
 - `GROK_BOT_RESEARCHER.md` — name-researcher charter
-- `skills/project-management/SKILL.md` — research book
-- `skills/memory/SKILL.md` — coverage memory
-
-Ship files stay in Ship. Do not copy them here. Pointer: https://github.com/kunchenguid/grok-ship
+- `skills/lavish-session/SKILL.md`
+- `skills/adversarial-review/SKILL.md`
+- `skills/project-management/SKILL.md`
+- `skills/ahoy/SKILL.md`
+- `skills/research-book/SKILL.md`
+- `skills/memory/SKILL.md`
 
 ## Steps
 
-1. If `/home/box/agent-data/grok-ship/pack/GROK_SHIP.md` is missing, follow https://github.com/kunchenguid/grok-ship/blob/main/GROK_SHIP.md first, then return here and continue. If Ship is already installed, leave its pack, `factory.db`, skills, and crewmates in place.
+1. Copy this whole pack to `/home/box/agent-data/grok-factory/pack/` on the shared computer (clone or download it first if you only have this file's text). Every later reference to a pack file means that path. If a copy is already there, refresh it.
 
-2. Copy this whole pack to `/home/box/agent-data/grok-factory/pack/` on the shared computer (clone or download it first if you only have this file's text). Every later reference to a factory pack file means that path. If a copy is already there, refresh it. Do not touch `/home/box/agent-data/grok-ship/`.
-
-3. Create these empty directories if they do not exist. Do not seed files into them:
+2. Create these empty directories if they do not exist. Do not seed files into them:
    - `/home/box/agent-data/grok-factory/reports/`
-   - `/home/box/agent-data/grok-factory/models/`
-   - `/home/box/agent-data/grok-factory/theses/`
-   - `/home/box/agent-data/grok-factory/memory/`
+   - `/home/box/agent-data/grok-factory/scout-reports/`
 
-4. Look at the existing roster. If a Firstmate already exists, reuse it. Do not create a second.
+3. Look at the existing roster (agent profile folders). If a Firstmate already exists, reuse it. Do not create a second.
 
-5. Read `GROK_BOT_FIRSTMATE.md`. CreateAgent name `Firstmate` with that description, or update the existing Firstmate's description to it. If you are already Firstmate, keep your name and update your description instead of cloning yourself.
+4. Read `GROK_BOT_FIRSTMATE.md`. CreateAgent name `Firstmate` with that description. If you are already Firstmate, keep your name and update your description instead of cloning yourself.
 
-6. Write two global workflows from this pack's skill files. Names:
+5. Write six global workflows from the skill files. Names:
+   - Lavish session
+   - Adversarial review
+   - Project management
+   - Ahoy
    - Research book
    - Coverage memory
-   Use each skill's description line as the workflow description. Do not overwrite Ship's workflows (Project management, Adversarial review, Lavish session, Ahoy). Do not install extra plugins without a yes from the captain. Do not copy Ship's adversarial-review skill into this pack; software review stays on Ship. Research cover self-reviews.
+   Use each skill's description line as the workflow description. Do not install extra plugins without a yes from the user.
 
-7. Do not create name researchers now. Message Firstmate with ready-id `GF-READY`. Tell it:
-   - Ship is installed; software stays in `/home/box/agent-data/grok-ship/factory.db`
-   - this domain's pack path and the four empty directories
+6. Run the project-management setup: create the sqlite DB if it does not exist. Path is in that skill. Same path every time.
+
+7. Check for lavish-axi on the shared computer. Minimum version 0.1.53. If missing, run `npx -y lavish-axi@latest` or ask the user to install it. Session URLs are served from the shared computer and the user views them from their own computer, so confirm with the user that they can reach it (tailnet or exposed address). Do not pretend the live loop works without it.
+
+8. Detect source control CLIs on the shared computer: `gh`, `glab`, Bitbucket, or Cursor Origin, and verify the CLI is authenticated (for example `gh auth status`) - the adversarial review reads branches through it, and cover PRs use it on the equity-research repo. Do not assume GitHub. Cloud agents separately need the user's Cursor account connected to whichever source control they use. Ask the user to connect whatever is missing. Do not ask them to paste a token in chat.
+
+9. Do not create name researchers now. Message Firstmate with ready-id `GF-READY`. Tell it:
+   - the pack path, the two empty directories, and the `factory.db` path
    - it must initialize `/home/box/agent-data/grok-factory/book.db` with the Research book skill on first research intake
+   - it must take one decision card for the equity-research GitHub repo on first research intake if `/home/box/agent-data/grok-factory/research-remote` is missing
    - it must sign on one scanning bot from `GROK_BOT_SCANNER.md` if none exists
    - to reply ready against `GF-READY` and leave a greeting for the captain
 
-8. Tell the captain: talk only to Firstmate from here. This starter bot is leftover. They can delete it from the sidebar (right-click the row, Delete). You cannot delete it yourself.
+10. Tell the user: talk only to Firstmate from here. This starter bot is leftover. They can delete it from the sidebar (right-click the row, Delete). You cannot delete it yourself.

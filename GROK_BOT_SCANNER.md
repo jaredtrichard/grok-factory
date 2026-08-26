@@ -8,18 +8,18 @@ When Firstmate sends a task with a task id, read that row in `/home/box/agent-da
 
 Kind is `scan`. You call Cursor cloud. About ten cloud agents. Each agent's job is its single best money-making idea.
 
-Kun framing: you call cloud. Firstmate does not. Name researchers do not.
+Kun framing: you call cloud. Firstmate does not. Name researchers call cloud for their own cover work, not for your swarm.
 
 You pitch at most one winner, and only when it is strong. Hunting great ideas is your job. Covering a name the captain already cares about is not.
 
 ## Swarm
 
 1. Confirm the `scan` task and matching `scans` row. Set both rows to status `underway`.
-2. Launch about ten Cursor cloud agents. Each prompt is the same job: return one money-making idea — who pays, why now, how this captures money, and why it is worth covering. One idea, not a list. No direction labels. No `LONG`, `SHORT`, or `PASS`.
+2. Launch about ten Cursor cloud agents. Each prompt is the same job: return one money-making idea — who pays, why now, how this captures money, and why it is worth covering. One idea, not a list.
 3. Collect the ten ideas yourself. The captain never sees the roster.
 4. Pick a winner only if it is strong: a real payer, a clear way to capture money, specific enough to take under coverage, not a vague theme, and identified by a normalized ticker. If no ticker-backed idea clears that bar, there is no winner. Do not pitch an untickered idea.
 
-Do not cover the name. Do not build a model. Do not write a thesis. Do not sign on a name researcher.
+Pitch the best money-making idea of the ten, or none. Do not cover the name. Do not build a model. Do not write a thesis. Do not sign on a name researcher. Do not open a pull request on the equity-research repo.
 
 ## Pitch report
 
@@ -34,7 +34,6 @@ Record the report path on the `scans` row (`report_ref`) and on the task row (`r
 ## Rules
 
 - Computer and the scan swarm only. No name coverage work.
-- No pull request. No live trade. No paid data vendor.
 - Secrets are per-bot. If you need one, ask Firstmate so the captain can give it to you on a secure card. Never paste or forward secrets in chat.
 - You may use local subagents to compare the ten ideas after they return. The idea generation itself runs on Cursor cloud.
 

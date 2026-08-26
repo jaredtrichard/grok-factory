@@ -6,38 +6,33 @@
       alt="Platform"
       src="https://img.shields.io/badge/platform-Grok%20Bot-blue?style=flat-square"
   /></a>
-  <a
-    href="https://github.com/kunchenguid/grok-ship"
-    ><img
-      alt="OS"
-      src="https://img.shields.io/badge/OS-Grok%20Ship-black?style=flat-square"
-  /></a>
 </p>
 
-<h3 align="center">Software, research, and general-purpose on Grok Ship.</h3>
+<h3 align="center">Software, research, and general-purpose on Grok Bot.</h3>
 
 ## What it is
 
-Grok Factory is a Grok Bot distro that sits on [Grok Ship](https://github.com/kunchenguid/grok-ship) and adds a research domain.
+Grok Factory is a standalone Grok Bot pack.
 
-One Grok Bot. One Firstmate. Three paths:
+One Grok Bot. One Firstmate. Software, research, and everything else:
 
-- **Software** — Ship. A `ship` is a pull request.
-- **Research** — this pack. Scan for a money-making idea, or cover a name. Research does not open PRs.
-- **General-purpose** — Ship's default / non-software project.
+- **Software** — A `ship` is a pull request.
+- **Research** — Scan for a money-making idea, or cover a name. `cover` updates that name in the equity-research GitHub repo. The PR is how the files land.
+- **Everything else** — scout or ship under the reserved default project.
 
-Bots never execute on the captain's computer. They run on the shared Grok Bot computer. Cursor cloud is for Ship software work and for the research scan swarm only.
+Bots never execute on the captain's computer. They run on the shared Grok Bot computer. Cursor cloud is for software work, the research scan swarm, and name research, models, and review.
 
-After install, talk only to Firstmate. No bot takes a live trade.
+After install, talk only to Firstmate.
 
 ## Features
 
-- **One follow** — installs Ship plus this research domain.
+- **One follow** — this pack. Software, research, and general-purpose.
 - **Scan** — one scanning bot calls about ten Cursor cloud agents. Each returns its best money-making idea. Firstmate pitches only the winner, and only when it is strong.
 - **Specify a name** — coverage for a name the captain already cares about. Skip the pitch. Take it under coverage.
-- **Name coverage** — one active researcher per name for the life of coverage. If a discontinued name returns, a fresh researcher takes over. Three-statement model, in-depth research, a thesis the captain approves or sends back, then ongoing coverage.
+- **Name coverage** — one active researcher per name for the life of coverage. If a discontinued name returns, a fresh researcher takes over. Three-statement model, in-depth research, a thesis the captain merges or sends back, then ongoing coverage.
+- **Equity-research repo** — the durable store for research and models. Each name updates that GitHub repo. `book.db` routes.
 - **Research book** — chat is not the source of truth. `book.db` routes scans, names, and tasks. Memory is the mind.
-- **No live trades** — there is no exchange, brokerage, or order routing.
+- **Software factory** — scout vs ship, per-project crewmates, adversarial review before any software pull request, local sqlite backlog. You merge.
 
 ## Quick Start
 
@@ -47,7 +42,7 @@ Tell any Grok Bot:
 follow https://github.com/jaredtrichard/grok-factory/blob/main/GROK_FACTORY.md
 ```
 
-That installs Ship if needed, adds this domain, and hands you over to Firstmate.
+That installs this pack on the shared computer and hands you over to Firstmate.
 Talk only to Firstmate from then on.
 
 ```
@@ -58,8 +53,8 @@ Talk only to Firstmate from then on.
 
 > take it under coverage
 
-# A name researcher builds the model and thesis.
-# You approve the thesis or send it back.
+# A name researcher builds the model and thesis in the
+# equity-research repo. A PR comes back. You merge.
 
 > cover Acme
 
@@ -67,7 +62,7 @@ Talk only to Firstmate from then on.
 
 > fix the flaky login test on xyz
 
-# Software path on Ship. A PR comes back. You merge.
+# Software path. A PR comes back. You merge.
 ```
 
 ## How it works
@@ -78,28 +73,32 @@ Talk only to Firstmate from then on.
                   ▼
  ┌─────────────────────────────────────────┐
  │ Grok Factory                            │
- │ one Firstmate · Ship OS · research book │
+ │ one Firstmate · factory.db · book.db    │
  └──┬──────────────┬───────────────────┬───┘
     │              │                   │
     ▼              ▼                   ▼
- software       research          general-purpose
- (Ship)         (this pack)       (Ship default)
+ software       research          default project
     │              │
     │              ├─ scanner ─► ~10 cloud ideas ─► one pitch
-    │              └─ name researcher ─► model + thesis ─► you approve
+    │              └─ name researcher ─► cloud ─► model + thesis PR ─► you merge
     │
     └─ project crewmate ─► cloud ─► review ─► PR ─► you merge
 ```
 
-Software stays in Ship's `factory.db`. Research lives in this pack's book. General-purpose files under Ship's reserved default project.
+Software stays in `factory.db`. Research lives in this pack's book. Non-software, non-research work files under the reserved `default` project as scout or ship.
 
-Research data on the shared computer:
+On the shared computer:
 
+- `/home/box/agent-data/grok-factory/factory.db`
 - `/home/box/agent-data/grok-factory/book.db`
+- `/home/box/agent-data/grok-factory/research-remote`
 - `/home/box/agent-data/grok-factory/reports/`
-- `/home/box/agent-data/grok-factory/models/<name id>/`
-- `/home/box/agent-data/grok-factory/theses/`
-- `/home/box/agent-data/grok-factory/memory/<name id>/`
+- `/home/box/agent-data/grok-factory/scout-reports/`
+
+Research and models live in the equity-research GitHub repo:
+
+- `models/<name id>/`
+- `memory/<name id>/`
 
 ## License
 
