@@ -39,7 +39,7 @@ The node map lives in this name's register and thesis: who pays whom, where valu
 
 ## INDEX.md
 
-Keep it short:
+Keep it concise:
 
 ```
 # <name> memory
@@ -64,7 +64,7 @@ Do not duplicate a fact across homes. Point instead.
 - Do not write a prose diary. Registers and pointers, not a recap of the day.
 - Do not store coverage facts in a bot's learning notes or in `book.db`.
 - Do not share one memory tree across two names.
-- A declined name keeps its name id and tree. A new researcher on a later take-under-coverage reads that tree before continuing coverage.
+- A declined name keeps its name id. If it was previously under coverage, it also keeps its researcher and tree; the same researcher reads that tree before resuming. If it was never covered, its first researcher creates the tree when coverage starts.
 
 ## Do not
 

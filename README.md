@@ -28,8 +28,8 @@ After install, talk only to Firstmate.
 
 - **One follow** — this pack. Software, research, and general-purpose.
 - **Scan** — one scanning bot calls about ten Cursor cloud agents. Each returns its best money-making idea. Firstmate pitches only the winner, and only when it is strong.
-- **Specify a name** — coverage for a name the captain already cares about. Skip the pitch. Take it under coverage.
-- **Name coverage** — one active researcher per name for the life of coverage. If a discontinued name returns, a fresh researcher takes over. Three-statement model, in-depth research, a thesis the captain merges or sends back, then ongoing coverage.
+- **Specify a name** — coverage for a name the captain already cares about. Supply its ticker, skip the pitch, and take it under coverage.
+- **Name coverage** — one researcher per name forever. If a discontinued name returns, the same researcher resumes it. Three-statement model, in-depth research, a thesis the captain merges or sends back, then ongoing coverage.
 - **Equity-research repo** — the durable store for research and models. Each name updates that GitHub repo. `book.db` routes.
 - **Research book** — chat is not the source of truth. `book.db` routes scans, names, and tasks. Memory is the mind.
 - **Software factory** — scout vs ship, per-project crewmates, adversarial review before any software pull request, local sqlite backlog. You merge.
@@ -56,7 +56,7 @@ Talk only to Firstmate from then on.
 # A name researcher builds the model and thesis in the
 # equity-research repo. A PR comes back. You merge.
 
-> cover Acme
+> cover Acme, ticker ACME
 
 # Skip the scan. Straight under coverage.
 

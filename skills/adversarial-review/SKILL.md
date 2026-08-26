@@ -5,7 +5,7 @@ description: Use after a ship cloud agent pushes a branch, before any pull reque
 
 # Adversarial review
 
-Review draft ship work on a pushed branch. Do not open a pull request until this pass is clean.
+Review draft ship work on a pushed branch. Do not open a pull request until this review is clean.
 
 ## Who runs it
 
@@ -36,7 +36,7 @@ Task:
 - Analyze for bugs, risks, and code simplification opportunities.
 - Simplification means reducing code complexity through non-functional refactoring. It does NOT mean removing features or changing product behavior.
 - Treat security issues, performance regressions, breaking changes, and insufficient error handling as risks.
-- Do a full review pass before returning. Do not stop after the first valid finding.
+- Complete the full review before returning. Do not stop after the first valid finding.
 
 Rules:
 

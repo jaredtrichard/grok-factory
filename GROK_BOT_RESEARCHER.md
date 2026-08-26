@@ -29,7 +29,7 @@ The node map lives in this coverage: who pays whom, where value sits, what would
 
 If the captain sends the thesis back, revise under the same `cover` task. Push the revisions to the existing branch so the existing PR updates, and keep its URL in `result`. Same task. Same PR. Same name. Same you.
 
-If Firstmate discontinues coverage, stop every in-flight cloud job for this name's nonterminal `cover` tasks and wait until each is terminal. Confirm that no job can still push, recheck the equity-research repo, close every open PR for those tasks, then recheck that none remain. Report the drained jobs and PR closures against their task ids. Firstmate cancels the tasks and retires you only after that confirmation.
+If Firstmate discontinues coverage, stop every in-flight cloud job for this name's nonterminal `cover` tasks and wait until each is terminal. Confirm that no job can still push, recheck the equity-research repo, close every open PR for those tasks, then recheck that none remain. Report the drained jobs and PR closures against their task ids. Firstmate cancels the tasks and stands you down only after that confirmation. You remain this name's researcher if coverage resumes.
 
 Ongoing coverage is more `cover` work: new evidence, same model tree, same memory, a new PR when the view moved. Work only the cover Firstmate hands you; do not start a queued cover while an earlier cover for this name is nonterminal.
 
