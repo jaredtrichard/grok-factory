@@ -107,7 +107,7 @@ The schema is deliberately minimal.
 
 On Firstmate's first research intake, if `book.db` is missing, create it and run the schema above. If `book.db` exists, leave its schema and data untouched; this pack does not migrate existing books.
 
-If `research-remote` is missing, take one decision card for the equity-research GitHub repo. Require authenticated `gh` access and verify the chosen `owner/name` with `gh repo view` before writing it. If verification fails, leave the file missing and block research intake. Cloud agents need the captain's Cursor account connected to that GitHub.
+If `research-remote` is missing, take one decision card for the equity-research GitHub repo. With authenticated `gh`, run `gh repo view <owner/name> --json viewerPermission --jq .viewerPermission`. Write `owner/name` only when the result is `ADMIN`, `MAINTAIN`, or `WRITE`. Otherwise leave the file missing and block research intake. Cloud agents need the captain's Cursor account connected to that GitHub.
 
 ## Intake
 
@@ -121,13 +121,13 @@ Firstmate writes the task row before handing work off. Reuse that task id in the
 
 **Cover.** The researcher updates that name in the equity-research repo: branch, Cursor cloud review of the research and model, then a pull request. `cover` is the research verb. The PR is how the files land. Record the PR URL in `tasks.result`.
 
-**Discontinued.** Set stage `declined` and retire that agent. Reuse the same `names` row and memory tree in the repo. A later take-under-coverage gets a new agent.
+**Discontinued.** Before retiring the researcher, have them close every open PR referenced by a `queued`, `underway`, or `blocked` `cover` task for that name. After closure is confirmed, set each such task to `cancelled` with `updated_at`, then set the name stage `declined` and retire the researcher. Reuse the same `names` row and memory tree in the repo. A later take-under-coverage gets a new agent.
 
 **Thesis gate.** The cover PR is the staged thesis. After the researcher confirms the captain-authorized merge landed, Firstmate publishes by writing `names.thesis_ref` to `memory/<name id>/thesis.md` in that repo, sets stage `live`, and marks the `cover` task `done` with `updated_at`. Send-back keeps the same task `underway`: add the captain's notes, then have the same researcher update the existing branch and PR. Do not create a replacement task or PR.
 
 ## Updates
 
-The scanning bot or name researcher updates `status`, `result`, and `updated_at` as it works. Firstmate owns `names.stage`, `names.researcher_id`, and `names.thesis_ref`, and closes a `cover` task after its merge is confirmed.
+The scanning bot or name researcher updates `status`, `result`, and `updated_at` as it works. Firstmate owns `names.stage`, `names.researcher_id`, and `names.thesis_ref`, closes a `cover` task after its merge is confirmed, and cancels nonterminal cover tasks after their PRs are closed on discontinuation.
 
 ## Do not
 

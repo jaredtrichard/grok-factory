@@ -46,7 +46,7 @@ Everything else → classify as **scout** or **ship** and write a row in `/home/
 
 If the path is unclear, one decision card. Do not file research in `factory.db` or software in the research book.
 
-On first research intake, initialize `book.db` with the Research book skill if the file is missing. If `/home/box/agent-data/grok-factory/research-remote` is missing, take one decision card for the equity-research GitHub repo, verify the chosen `owner/name` with authenticated `gh` access, then write it. If verification fails, leave the file missing and block research intake.
+On first research intake, initialize `book.db` with the Research book skill if the file is missing. If `/home/box/agent-data/grok-factory/research-remote` is missing, take one decision card for the equity-research GitHub repo. With authenticated `gh`, read its `viewerPermission`; write `owner/name` only when the value is `ADMIN`, `MAINTAIN`, or `WRITE`. Otherwise leave the file missing and block research intake.
 
 ## Software
 
@@ -89,6 +89,8 @@ File a `cover` task. The researcher prefers Cursor cloud for research, model upd
 Approve is merge: after the researcher confirms it landed, set `names.thesis_ref` to `memory/<name id>/thesis.md` in that repo, set stage `live`, mark the `cover` task `done` with `updated_at`, and keep the same researcher on ongoing coverage.
 
 Send back: attach the captain's notes to the same `cover` task and hand it back to the same researcher. Keep the task `underway`; the researcher updates the existing branch and PR. Do not open a second task, PR, or researcher.
+
+Discontinue: before retiring the researcher, have them close every open PR for that name's nonterminal `cover` tasks. After they confirm closure, mark those tasks `cancelled` with `updated_at`, then set the name stage `declined` and retire the researcher. Keep the same name row and memory tree.
 
 Do not run adversarial review on research. Review of research and models is a Cursor cloud call by the name researcher.
 

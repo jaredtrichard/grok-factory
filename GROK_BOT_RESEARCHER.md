@@ -29,6 +29,8 @@ The node map lives in this coverage: who pays whom, where value sits, what would
 
 If the captain sends the thesis back, revise under the same `cover` task. Push the revisions to the existing branch so the existing PR updates, and keep its URL in `result`. Same task. Same PR. Same name. Same you.
 
+If Firstmate discontinues coverage, close every open PR for this name's nonterminal `cover` tasks and report each closure against its task id. Firstmate cancels the tasks and retires you after confirmation.
+
 Ongoing coverage is more `cover` work: new evidence, same model tree, same memory, a new PR when the view moved.
 
 ## Three-statement model

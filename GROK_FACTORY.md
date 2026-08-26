@@ -70,7 +70,7 @@ Same directory as this file:
 9. Do not create name researchers now. Message Firstmate with ready-id `GF-READY`. Tell it:
    - the pack path, the two empty directories, and the `factory.db` path
    - it must initialize `/home/box/agent-data/grok-factory/book.db` with the Research book skill on first research intake
-   - it must take one decision card for the equity-research GitHub repo on first research intake if `/home/box/agent-data/grok-factory/research-remote` is missing, verify the chosen `owner/name` with authenticated `gh` access, then write it
+   - it must take one decision card for the equity-research GitHub repo on first research intake if `/home/box/agent-data/grok-factory/research-remote` is missing, verify with authenticated `gh` that `viewerPermission` for the chosen `owner/name` is `ADMIN`, `MAINTAIN`, or `WRITE`, then write it
    - it must sign on one scanning bot from `GROK_BOT_SCANNER.md` if none exists
    - to reply ready against `GF-READY` and leave a greeting for the captain
 
