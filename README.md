@@ -20,16 +20,16 @@ One Grok Bot. One Firstmate. Software, research, and everything else:
 - **Research** — Scan for a money-making idea, or cover a name. `cover` updates that name in the equity-research GitHub repo. The PR is how the files land.
 - **Everything else** — scout or ship under the reserved default project.
 
-Bots never execute on the captain's computer. They run on the shared Grok Bot computer. Cursor cloud is for software work, the research scan swarm, and name research, models, and review.
+Bots never execute on the captain's computer. They run on the shared Grok Bot computer. Cursor cloud does software work and the heavy research: gathering, model building, and research. Grok bots synthesize and write.
 
 After install, talk only to Firstmate.
 
 ## Features
 
 - **One follow** — this pack. Software, research, and general-purpose.
-- **Scan** — one scanning bot calls about ten Cursor cloud agents. Each returns its best money-making idea. Firstmate pitches only the winner, and only when it is strong.
+- **Scan** — one scanning bot runs quantitative screens and a thematic sweep on Cursor cloud. Firstmate pitches only the winner, and only when it is strong.
 - **Specify a name** — coverage for a name the captain already cares about. Supply its ticker, skip the pitch, and take it under coverage.
-- **Name coverage** — one researcher per name forever. If a discontinued name returns, the same researcher resumes it. Three-statement model, in-depth research, a thesis the captain merges or sends back, then ongoing coverage.
+- **Name coverage** — one researcher per name forever. If a discontinued name returns, the same researcher resumes it. Initiation is research file, segment three-statement model, valuation, then thesis — one PR, no captain checkpoint between gates. Then ongoing coverage.
 - **Equity-research repo** — the durable store for research and models. Each name updates that GitHub repo. `book.db` routes.
 - **Research book** — chat is not the source of truth. `book.db` routes scans, names, and tasks. Memory is the mind.
 - **Software factory** — scout vs ship, per-project crewmates, adversarial review before any software pull request, local sqlite backlog. You merge.
@@ -48,13 +48,13 @@ Talk only to Firstmate from then on.
 ```
 > scan for a money-making idea
 
-# The scanning bot calls about ten cloud agents.
+# The scanning bot runs screens and a thematic sweep.
 # Firstmate brings back one pitch, or says none cleared.
 
 > take it under coverage
 
-# A name researcher builds the model and thesis in the
-# equity-research repo. A PR comes back. You merge.
+# A name researcher runs initiation and opens one PR
+# on the equity-research repo. You merge.
 
 > cover Acme, ticker ACME
 
@@ -79,8 +79,8 @@ Talk only to Firstmate from then on.
     ▼              ▼                   ▼
  software       research          default project
     │              │
-    │              ├─ scanner ─► ~10 cloud ideas ─► one pitch
-    │              └─ name researcher ─► cloud ─► model + thesis PR ─► you merge
+    │              ├─ scanner ─► screens + sweep ─► one pitch
+    │              └─ name researcher ─► cloud ─► research + model + valuation + thesis PR ─► you merge
     │
     └─ project crewmate ─► cloud ─► review ─► PR ─► you merge
 ```
