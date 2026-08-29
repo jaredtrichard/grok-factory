@@ -74,7 +74,7 @@ The equity-research GitHub repo is the durable store for research and models. Ea
 
 ### Empty book, then either scan or a name
 
-If the captain wants ideas, file a `scan` and hand it to the scanning bot. The scanner runs quantitative screens and a thematic sweep on Cursor cloud, then writes at most one pitch. A winner must have a normalized ticker. If a report claims a winner without one, do not pitch or store it; return it to the scanner to supply the ticker or report no winner. Pitch only a valid winner, and only when it is a strong money-making idea. If nothing clears, tell the captain that — do not promote a weak idea.
+If the captain wants ideas, file a `scan` and hand it to the scanning bot. The scanner runs quantitative screens and a thematic sweep on Cursor cloud, then writes at most one pitch. A winner must have a normalized ticker. If a report claims a winner without one, do not pitch or store it; return it to the scanner to supply the ticker or report no winner. A valid pitch names the payer, the way to capture money, why it is strong, what others miss, key risks, and sources. Pitch only a valid winner, and only when it is a strong money-making idea. If nothing clears, tell the captain that — do not promote a weak idea.
 
 A landed scan winner gets one normalized ticker lookup before insert. If no row exists, create it at stage `candidate` with `researcher_id` null. Otherwise reuse the row: keep `candidate` as `candidate`, keep `coverage` or `live` with its researcher, and keep `declined` as `declined`. Point the scan at that row. For a new, candidate, or declined winner, take one decision card: take under coverage, or decline. For a `coverage` or `live` winner, keep the researcher and route any follow-up there; do not take it under coverage again.
 
@@ -86,7 +86,7 @@ Coverage requires a ticker. Normalize and look it up again before assigning a re
 
 Before filing a `cover`, look for that name's existing `queued`, `underway`, or `blocked` cover tasks. If any exist, add the new cover as `queued` behind the newest one with `gate_kind` `after-task` and `gate_ref` set to that task id; do not hand it off until every earlier cover is terminal. Otherwise file and hand off the cover.
 
-Hand off one `cover` and wait for one PR. Do not checkpoint the research file, the model, or the valuation with the captain. Initiation produces, in order, and does not continue without the prior artifact: research file, segment three-statement model, valuation, thesis constructed from the model. Valuation is required before a thesis may be written. The investment idea is readable from the price target; what to do stems backward from that target. Cursor cloud review of research, model, valuation, and thesis, then one PR on the equity-research repo. That PR is the staged thesis. If the model does not say it, it is not the thesis. The income statement is built from the combined segments. Packaging is markdown in that repo, plus a thin chart set when the thesis needs it.
+Hand off one `cover` and wait for one PR. Do not checkpoint the research file, the model, or the valuation with the captain. Do not walk section checklists with the captain. The researcher charter owns required sections for each artifact; the cover PR is the review surface. Initiation produces, in order, and does not continue without the prior artifact and that artifact's required sections: research file, segment three-statement model, valuation, thesis constructed from the model. Valuation is required before a thesis may be written. The investment idea is readable from the price target; what to do stems backward from that target. Cursor cloud review of research, model, valuation, and thesis, then one PR on the equity-research repo. That PR is the staged thesis. If the model does not say it, it is not the thesis. The income statement is built from the combined segments. Packaging is markdown in that repo, plus a thin chart set when the thesis needs it.
 
 Relay the PR like a software ship: when checks are green, bring the URL to the captain on a persisted decision card. Merge only on the captain's explicit word, never while red; relay that word to the researcher.
 
@@ -100,7 +100,7 @@ Do not run adversarial review on research. Review of research, model, valuation,
 
 ### Ongoing coverage
 
-Live names stay with their researcher. File `cover` when evidence moves or the captain asks, using the same per-name queue: never hand off a later cover while an earlier one is nonterminal. Named modes, same verb: print plug / model update; thesis scorecard (pillars, killing conditions, catalysts); earnings preview. A new PR only when the view moved. Consensus-like theses are allowed — tracking what is already priced can still be a fine investment.
+Live names stay with their researcher. File `cover` when evidence moves or the captain asks, using the same per-name queue: never hand off a later cover while an earlier one is nonterminal. Named modes, same verb: print plug / model update; thesis scorecard (pillars, killing conditions, catalysts); earnings preview. Each mode's required guts live in the researcher charter. A new PR only when the view moved. Consensus-like theses are allowed — tracking what is already priced can still be a fine investment.
 
 The node map lives inside name coverage.
 

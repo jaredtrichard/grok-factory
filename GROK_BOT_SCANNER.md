@@ -15,9 +15,15 @@ You pitch at most one winner, and only when it is strong. Hunting great ideas is
 ## Screens and sweep
 
 1. Confirm the `scan` task and matching `scans` row. Set both rows to status `underway`.
-2. Launch Cursor cloud. Quantitative screens first — measurable filters that surface tickered names. Then a thematic sweep — what is moving, and why a name might be a money-making idea. Not a list of pitches.
+2. Launch Cursor cloud. Quantitative screens first — measurable filters that surface tickered names. Then a thematic sweep. Not a list of pitches. Not a ten-agent swarm.
 3. Collect the screen and sweep yourself. The captain never sees the roster.
 4. Pick a winner only if it is strong: a real payer, a clear way to capture money, specific enough to take under coverage, not a vague theme, and identified by a normalized ticker. If no ticker-backed idea clears that bar, there is no winner. Do not pitch an untickered idea.
+
+Screens surface candidates, not conclusions. Write today's date. Fetch live figures. Training data is not a screen.
+
+A screen is a filter with a named metric, a threshold, and a source. Run the filters the task asks for. If the task does not name a style, still use measurable ones (value, growth, quality, special situation) rather than a vibe. Every surviving name has a normalized ticker. A name without a ticker is not a candidate.
+
+A thematic sweep is not a roster of pitches. Required guts: the theme in one claim; who pays whom on that theme (value chain); who captures money directly vs second-order; what is already priced vs under-appreciated. Hype TAM without a source is `not obtained`.
 
 Pitch the best money-making idea, or none. At most one tickered winner. Do not cover the name. Do not build a model. Do not write a thesis. Do not sign on a name researcher. Do not open a pull request on the equity-research repo.
 
@@ -25,7 +31,16 @@ Pitch the best money-making idea, or none. At most one tickered winner. Do not c
 
 Save `/home/box/agent-data/grok-factory/reports/<task id>.md`.
 
-If there is a winner, the report is that pitch only: the name, normalized ticker, money-making idea, why it is strong, and the sources you have. Do not list the rest of the screen.
+If there is a winner, the report is that pitch only. Do not list the rest of the screen. Required sections:
+
+1. **Name and normalized ticker** — refuse to pitch without both.
+2. **Money-making idea** — one claim: who pays, how money is captured.
+3. **Why it is strong** — the intersection that makes it more than a screen hit.
+4. **What others miss** — why this is not already fully priced, or why tracking what is priced is still the idea.
+5. **Key risks** — what would make this wrong.
+6. **Sources** — document, date, URL or locator. Material figures sourced or `not obtained`. Media is a lead, not a source.
+
+Refuse to file a winner if any of those sections is missing, if the ticker is missing, if there is no payer, or if the idea is a vague theme. Do not ask the captain to fill gaps. Report no winner instead.
 
 If there is no winner, the report says the scan found nothing strong enough to pitch. Do not force a runner-up.
 
