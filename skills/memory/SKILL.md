@@ -26,16 +26,20 @@ If `INDEX.md` is missing, write it, then continue.
 | file | owns |
 | --- | --- |
 | `INDEX.md` | map of homes; no facts |
+| `research.md` | research file; segment drivers |
 | `register.md` | facts, KPIs, citations, `not obtained` |
 | `thesis.md` | working thesis and killing conditions |
-| `model.md` | pointer to `models/<name id>/` and reconciliation notes |
+| `model.md` | pointer to `models/<name id>/` (including valuation) and reconciliation notes |
 | `consensus.md` | what is already priced; views around the name |
+| `charts/` | thin chart set, only when the thesis needs a picture |
 
-One home per fact. If a number lives in the workbook, `model.md` points at the line. Do not copy that number into `register.md` or `thesis.md`.
+One home per fact. If a number lives in the workbook, `model.md` points at the line. Do not copy that number into `register.md` or `thesis.md`. The price target lives in `models/<name id>/valuation.md`; point at it.
+
+`research.md` is gate one of initiation. No model without it. No valuation without the model. No thesis without the valuation.
 
 `thesis.md` is the working mind. The cover PR is what Firstmate takes to the captain. `names.thesis_ref` is the published pointer after merge. Do not treat those three as interchangeable.
 
-The node map lives in this name's register and thesis: who pays whom, where value sits, what would break it.
+The node map lives in this name's coverage: who pays whom, where value sits, what would break it.
 
 ## INDEX.md
 
@@ -48,10 +52,12 @@ Read this first. Open only the home you need.
 
 | home | owns |
 | --- | --- |
+| research.md | research file; segment drivers |
 | register.md | facts, KPIs, citations |
 | thesis.md | working thesis and killing conditions |
-| model.md | workbook pointer and reconciliation notes |
+| model.md | workbook pointer, including valuation |
 | consensus.md | what is already priced |
+| charts/ | thin charts, only if the thesis needs them |
 
 Do not duplicate a fact across homes. Point instead.
 ```

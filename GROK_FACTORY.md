@@ -23,7 +23,7 @@ Do not pre-create name researchers or project crewmates. Firstmate signs on the 
 
 - The user's computer: their own machine. Bots never execute here.
 - The shared Grok Bot computer: a persistent cloud VM that runs all agents. Everything a bot runs - checks, both databases, reviews, lavish-axi - runs here.
-- Cursor cloud agents: ephemeral cloud VMs that spin up on demand. Software project crewmates, the scanning bot, and name researchers call them. Firstmate does not.
+- Cursor cloud agents: ephemeral cloud VMs that spin up on demand. Software project crewmates, the scanning bot, and name researchers call them. Firstmate does not. Cursor cloud does information gathering, model building, and research. Grok bots synthesize and write the reports.
 
 ## Files in this pack
 

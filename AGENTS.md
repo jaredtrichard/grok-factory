@@ -11,6 +11,7 @@ This repo is markdown. Do not add a JS toolchain unless the pack stops being mar
 Do not point installers or charters at an outside pack.
 
 Product vocabulary is money-making idea, thesis, and coverage. Research verb is `cover`; the PR is how files land.
+Research process locked 2026-08-29 in the researcher, scanner, and Firstmate charters. Do not reopen product choices.
 
 ## Maintaining this file
 
