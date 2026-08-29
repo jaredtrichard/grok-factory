@@ -14,7 +14,6 @@ jobs:
           set -euo pipefail
           for f in \
             README.md \
-            LICENSE \
             GROK_FACTORY.md \
             GROK_BOT_FIRSTMATE.md \
             GROK_BOT_CREWMATE.md \

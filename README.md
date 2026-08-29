@@ -99,7 +99,3 @@ Research and models live in the equity-research GitHub repo:
 
 - `models/<name id>/`
 - `memory/<name id>/`
-
-## License
-
-MIT — see [LICENSE](LICENSE).
