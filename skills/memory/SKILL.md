@@ -26,7 +26,7 @@ If `INDEX.md` is missing, write it, then continue.
 | file | owns |
 | --- | --- |
 | `INDEX.md` | map of homes; no facts |
-| `research.md` | research file; segment drivers |
+| `research.md` | research file; node map; segment drivers |
 | `register.md` | facts, KPIs, citations, `not obtained` |
 | `thesis.md` | working thesis and killing conditions |
 | `model.md` | pointer to `models/<name id>/` (including valuation) and reconciliation notes |
@@ -35,11 +35,13 @@ If `INDEX.md` is missing, write it, then continue.
 
 One home per fact. If a number lives in the workbook, `model.md` points at the line. Do not copy that number into `register.md` or `thesis.md`. The price target lives in `models/<name id>/valuation.md`; point at it.
 
+Required sections for `research.md`, the three statements, `valuation.md`, `thesis.md`, and each ongoing cover mode live in the name-researcher charter. This skill owns homes, not those checklists. A file that exists without its required sections is not the artifact.
+
 `research.md` is gate one of initiation. No model without it. No valuation without the model. No thesis without the valuation.
 
 `thesis.md` is the working mind. The cover PR is what Firstmate takes to the captain. `names.thesis_ref` is the published pointer after merge. Do not treat those three as interchangeable.
 
-The node map lives in this name's coverage: who pays whom, where value sits, what would break it.
+The node map lives in this name's coverage: who pays whom, where value sits, what would break it. It is a required section of `research.md`, not a separate home.
 
 ## INDEX.md
 
@@ -52,7 +54,7 @@ Read this first. Open only the home you need.
 
 | home | owns |
 | --- | --- |
-| research.md | research file; segment drivers |
+| research.md | research file; node map; segment drivers |
 | register.md | facts, KPIs, citations |
 | thesis.md | working thesis and killing conditions |
 | model.md | workbook pointer, including valuation |
@@ -65,8 +67,10 @@ Do not duplicate a fact across homes. Point instead.
 ## Write rules
 
 - Flush before context dies. A fact that lives only in this chat is lost.
-- Mark material numbers with source and as-of, or write `not obtained`.
+- Mark material numbers with source and as-of, or write `not obtained`. Never guess. Media is a lead, not a source.
 - Class facts when it helps: `[FACT]` (primary document + citation), `[DEDUCTED]` (computed from named inputs), `[VIEW]` (judgment).
+- `register.md` is a table, not a diary: fact, class, source, as-of, or `not obtained`.
+- `consensus.md` holds the views around the name and what is already priced, each with source and as-of. The thesis states the delta; it does not restock this roster.
 - Do not write a prose diary. Registers and pointers, not a recap of the day.
 - Do not store coverage facts in a bot's learning notes or in `book.db`.
 - Do not share one memory tree across two names.
