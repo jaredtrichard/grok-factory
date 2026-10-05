@@ -35,9 +35,9 @@ Then talk only to Kevin.
 ```
 > what's on my calendar this week, and anything urgent in email?
 
-Bello, boss! Stuart · Inbox cleared 42 emails. Three need you:
+Bello, boss! Stuart · Inbox went through 42 emails. Three need you:
 the venue contract, a client invoice question, and Thursday's
-dentist reschedule. Drafts are ready for each.
+dentist reschedule. Replies are drafted and lab-reviewed; tap to send.
 
 > the contact form on the site is broken
 

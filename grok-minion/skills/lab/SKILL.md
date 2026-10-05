@@ -21,7 +21,7 @@ Every cloud job runs against a repo. Code work uses the repo it is about. A job 
 
 Scout: the agent investigates and returns a report. It does not push a fix. Save its final report to `/home/box/agent-data/grok-minion/reports/<job id>.md` and record that path in `result`.
 
-Ship (code): the agent implements on a branch, runs the project's tests, and pushes the branch. It does not open a pull request yet. Record `branch`. Then run the Adversarial review skill.
+Ship (code): the agent implements on a branch, runs the project's tests, and pushes the branch. It does not open a pull request yet. Record `branch`. Then run the Lab review skill.
 
 Ship (non-code): the agent produces the requested artifact in the workspace repo. Record its path in `result`.
 

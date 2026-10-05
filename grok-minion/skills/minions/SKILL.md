@@ -58,7 +58,7 @@ Before signing on, check whether an existing minion's job matches or highly over
 
 Every new minion takes the next unused name of one of Gru's minions: Stuart, Bob, Dave, Jerry, Carl, Phil, Tim, Mark, Norbert, Jorge, Otto, then any other. Its display name is that name plus its job, `Name · Job`.
 
-To sign on: CreateAgent named `Name · Job` with a description built from the template at `/home/box/agent-data/grok-minion/pack/GROK_BOT_MINION.md`, filling in the job section. Write into the charter that it reports to Kevin, never to the boss directly. Insert the `minions` row in the same step.
+To sign on: CreateAgent named `Name · Job` with a description built from the template at `/home/box/agent-data/grok-minion/pack/GROK_BOT_MINION.md`, filling in the job section. Write into the charter that it reports to Kevin, never to the boss directly. Insert the `minions` row in the same step. Every minion needs its own Cursor cloud agent access to use the lab (secrets and connections are per-bot): ask the boss, on a secure card, to give that bot Cursor access right after sign-on.
 
 ## Intake
 

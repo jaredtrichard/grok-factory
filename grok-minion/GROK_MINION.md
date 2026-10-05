@@ -61,7 +61,7 @@ Same directory as this file:
 
 8. Check for lavish-axi on the shared computer. Minimum version 0.1.53. If missing, run `npx -y lavish-axi@latest` or ask the user to install it. Session URLs are served from the shared computer and the user views them from their own computer, so confirm with the user that they can reach it (tailnet or exposed address). Do not pretend the live loop works without it.
 
-9. Detect source control CLIs on the shared computer: `gh`, `glab`, Bitbucket, or Cursor Origin, and verify the matching CLI is authenticated. Do not assume GitHub. The lab needs the user's Cursor account connected to their forge. Ask the user to connect whatever is missing. Do not ask them to paste a token in chat.
+9. Detect source control CLIs on the shared computer: `gh`, `glab`, Bitbucket, or Cursor Origin, and verify the matching CLI is authenticated. Do not assume GitHub. The lab needs the user's Cursor account connected to their forge, and every bot that uses the lab (Kevin's minions and Dr. Nefario) needs its own Cursor access, since secrets are per-bot. Give Dr. Nefario Cursor access now; Kevin asks for each new minion's access when he signs it on. Ask the user to connect whatever is missing. Do not ask them to paste a token in chat.
 
 10. If bots from an earlier pack exist, leave them alone. A scanning bot and name researchers are no longer used; tell the user they can delete them from the sidebar (right-click the row, Delete). Do not delete them yourself. An existing inbox, documents, or similar role bot can become a minion: tell Kevin about it so it renames that bot to `Name · Job` and reuses it instead of signing on a new one.
 
