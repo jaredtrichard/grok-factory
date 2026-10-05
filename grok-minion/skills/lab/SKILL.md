@@ -1,11 +1,11 @@
 ---
 name: The lab
-description: Use whenever Dr. Nefario sends a job to the lab (a Cursor cloud agent), and on every wake while a lab job is underway.
+description: Use whenever Dr. Nefario sends a coding or heavy job to the lab (a Cursor cloud agent), and on every wake while a lab job is underway.
 ---
 
 # The lab
 
-The lab is Cursor cloud agents: ephemeral VMs that do code, code review, and heavy research or building off the shared computer. Dr. Nefario · Code is the only bot that sends work to the lab. No Grok bot writes code.
+The lab is Cursor cloud agents: ephemeral VMs that do code, review, and heavy research or building off the shared computer. Dr. Nefario · Code is the only bot that sends coding and heavy jobs to the lab. Every minion uses the lab for review (see the Lab review skill). No Grok bot writes code.
 
 Chat is not the source of truth. Lab jobs are rows in `minions.db` owned by Dr. Nefario; the schema and path are in the Minions skill.
 
@@ -29,8 +29,8 @@ Ship (non-code): the agent produces the requested artifact in the workspace repo
 
 Check every `underway` lab job on each wake: read its cloud agent's state and update the row. If Grok Bot supports scheduled wakes, keep one standing wake while any lab job is underway and drop it when none are. A standing wake with nothing new stays quiet.
 
-- Agent finished a scout: save the report, mark `done`, report the finding to Kevin.
-- Agent pushed a code branch: run the Adversarial review skill (a fresh lab agent). Loop auto-fix findings back to the same coding agent. When review is clean, have the same agent open the pull request, record the URL in `result`, and watch its checks.
+- Agent finished a scout: save the report, run the Lab review skill on it, mark `done`, report the finding to Kevin.
+- Agent pushed a code branch: run the Lab review skill (a fresh lab agent). Loop auto-fix findings back to the same coding agent. When review is clean, have the same agent open the pull request, record the URL in `result`, and watch its checks.
 - Checks red: send the failure back to the same cloud agent. Do not report a red PR as ready.
 - Checks green: report the PR URL to Kevin, who brings it to the boss (merge, send back, or close).
 - Merge only when Kevin relays the boss's explicit word, never while red. After it lands, mark the job `done`.

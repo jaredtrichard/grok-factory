@@ -1,13 +1,13 @@
 # Grok Minion
 
-A general Grok Bot pack. You are Gru. Kevin is your head minion. Other minions take on whatever jobs you need, and Dr. Nefario runs the lab for code.
+A general Grok Bot pack. You are Gru. Kevin is your head minion. Other minions take on whatever jobs you need, Dr. Nefario owns code, and the lab (Cursor cloud agents) does the coding and reviews everything before you see it.
 
 ## What it is
 
-- **Kevin · Head minion** is the one bot you talk to. He takes every request, routes it, tracks it, and calls you boss. Low reasoning effort: his job is intake and supervision.
+- **Kevin · Head minion** is the one bot you talk to. He takes every request, routes it, tracks it, and calls you boss.
 - **Minions** are Grok bots, each named after one of Gru's minions with its job as a subtitle: `Stuart · Inbox`, `Bob · Website`, `Dave · Social`. Kevin signs one on the first time you bring work no minion covers. The jobs follow what you bring; those are just examples.
 - **Dr. Nefario · Code** owns every code project. He never writes code himself.
-- **The lab** is Cursor cloud agents (grok 4.6, high reasoning). One agent writes the code on a branch, and a separate, fresh agent reviews it before any pull request. You merge.
+- **The lab** is Cursor cloud agents (grok 4.6, high reasoning). It does all coding, and it reviews everything before it reaches you: code, writing, email or file deletions, finances, reports. The reviewer is always a fresh agent that did not do the work. Only trivial answers skip review.
 
 Minions draft and you approve. Sending email, posting, paying, deleting or sharing files, and publishing to a live site each need your yes, unless you gave a standing OK for that kind of action.
 
@@ -17,7 +17,7 @@ Compared with the full Grok Factory pack in the repo root:
 |---|---|---|
 | Equity research (scan, cover, book) | yes | no |
 | Grok bots for code | one crewmate per project | Dr. Nefario for all projects |
-| Code review | fresh subagent on the shared computer | fresh agent in the lab |
+| Review | code only, fresh subagent on the shared computer | everything non-trivial, fresh agent in the lab |
 | Other bots | inbox, documents, as needed | minions, any job, as needed |
 | Backlog | `factory.db` + `book.db` | `minions.db` (roster, jobs, decisions) |
 | Voice | ship captain | Kevin and the boss, light minionese |
@@ -56,7 +56,7 @@ dentist reschedule. Drafts are ready for each.
    │  asks, approvals, "merge it"
    ▼
  Kevin · Head minion ── minions.db
-   ├─ Stuart · Inbox, Bob · Website, ... ─► drafts and results ─► your yes for anything outward
+   ├─ Stuart · Inbox, Bob · Website, ... ─► drafts ─► lab review ─► your yes for anything outward
    └─ Dr. Nefario · Code ─► the lab: code agent ─► fresh review agent ─► PR ─► you merge
 ```
 

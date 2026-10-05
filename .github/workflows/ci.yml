@@ -32,7 +32,7 @@ jobs:
             grok-minion/GROK_BOT_MINION.md \
             grok-minion/skills/minions/SKILL.md \
             grok-minion/skills/lab/SKILL.md \
-            grok-minion/skills/adversarial-review/SKILL.md \
+            grok-minion/skills/lab-review/SKILL.md \
             grok-minion/skills/bello/SKILL.md \
             grok-minion/skills/lavish-session/SKILL.md
           do
