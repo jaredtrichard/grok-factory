@@ -28,7 +28,9 @@ jobs:
             gru/README.md \
             gru/GRU.md \
             gru/GROK_BOT_GRU.md \
-            gru/skills/cloud-agents/SKILL.md \
+            gru/skills/minions/SKILL.md \
+            gru/skills/lab/SKILL.md \
+            gru/GROK_BOT_MINION.md \
             gru/skills/adversarial-review/SKILL.md \
             gru/skills/bello/SKILL.md \
             gru/skills/lavish-session/SKILL.md
