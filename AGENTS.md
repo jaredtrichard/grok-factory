@@ -7,7 +7,7 @@ Standalone Grok Bot pack. Software, research, and general-purpose from this repo
 - Software backlog: `factory.db`. Research book: `book.db`.
 - Equity-research GitHub repo is the durable store for research and models; `research-remote` holds `owner/name`.
 
-`first-mate-lite/` is a separate, self-contained pack: one Firstmate, no crew, no research, Cursor cloud agents launched by Firstmate. Its installer is `first-mate-lite/FIRST_MATE_LITE.md` and its data lives in `/home/box/agent-data/first-mate-lite/`. Keep it independent of the root pack's files.
+`gru/` is a separate, self-contained pack: one orchestrator named Gru, no Grok crew, no research, Cursor cloud agents (minions) sent by Gru. Despicable Me voice: the user is "boss", not captain. Installer `gru/GRU.md`; data in `/home/box/agent-data/gru/`. Keep it independent of the root pack's files.
 
 This repo is markdown. Do not add a JS toolchain unless the pack stops being markdown.
 Do not point installers or charters at an outside pack.

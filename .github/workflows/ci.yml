@@ -25,13 +25,13 @@ jobs:
             skills/adversarial-review/SKILL.md \
             skills/ahoy/SKILL.md \
             skills/lavish-session/SKILL.md \
-            first-mate-lite/README.md \
-            first-mate-lite/FIRST_MATE_LITE.md \
-            first-mate-lite/GROK_BOT_FIRSTMATE.md \
-            first-mate-lite/skills/cloud-agents/SKILL.md \
-            first-mate-lite/skills/adversarial-review/SKILL.md \
-            first-mate-lite/skills/ahoy/SKILL.md \
-            first-mate-lite/skills/lavish-session/SKILL.md
+            gru/README.md \
+            gru/GRU.md \
+            gru/GROK_BOT_GRU.md \
+            gru/skills/cloud-agents/SKILL.md \
+            gru/skills/adversarial-review/SKILL.md \
+            gru/skills/bello/SKILL.md \
+            gru/skills/lavish-session/SKILL.md
           do
             test -f "$f"
           done

@@ -3,13 +3,13 @@ name: Adversarial review
 description: Use after a ship cloud agent pushes a branch, before any pull request.
 ---
 
-# Adversarial review
+# Adversarial review (Dr. Nefario)
 
 Review draft ship work on a pushed branch. Do not open a pull request until this review is clean.
 
 ## Who runs it
 
-Firstmate starts a **fresh** subagent. Do not resume an old review subagent. Run the review subagent at high reasoning even though Firstmate runs low, unless the captain asked for a specific model.
+Gru starts a **fresh** subagent. Do not resume an old review subagent. Run the review subagent at high reasoning even though Gru runs low, unless the boss asked for a specific model.
 
 The subagent starts blank. The dispatch must include the repo, source control CLI, branch, base, and this entire prompt.
 
@@ -78,7 +78,7 @@ Return JSON:
 ## Loop
 
 - `auto-fix`: reply to the same cloud agent. Then a new fresh review subagent.
-- `ask-user`: take one decision card to the captain. Do not raise.
+- `ask-user`: take one decision card to the boss. Do not raise.
 - `error`: do not raise.
 - Empty findings, or only `info` / already-answered `ask-user`: the cloud agent may open the pull request.
 
