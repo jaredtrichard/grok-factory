@@ -25,15 +25,16 @@ jobs:
             skills/adversarial-review/SKILL.md \
             skills/ahoy/SKILL.md \
             skills/lavish-session/SKILL.md \
-            gru/README.md \
-            gru/GRU.md \
-            gru/GROK_BOT_GRU.md \
-            gru/skills/minions/SKILL.md \
-            gru/skills/lab/SKILL.md \
-            gru/GROK_BOT_MINION.md \
-            gru/skills/adversarial-review/SKILL.md \
-            gru/skills/bello/SKILL.md \
-            gru/skills/lavish-session/SKILL.md
+            grok-minion/README.md \
+            grok-minion/GROK_MINION.md \
+            grok-minion/GROK_BOT_KEVIN.md \
+            grok-minion/GROK_BOT_NEFARIO.md \
+            grok-minion/GROK_BOT_MINION.md \
+            grok-minion/skills/minions/SKILL.md \
+            grok-minion/skills/lab/SKILL.md \
+            grok-minion/skills/adversarial-review/SKILL.md \
+            grok-minion/skills/bello/SKILL.md \
+            grok-minion/skills/lavish-session/SKILL.md
           do
             test -f "$f"
           done

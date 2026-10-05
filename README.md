@@ -24,7 +24,7 @@ Bots never execute on the captain's computer. They run on the shared Grok Bot co
 
 After install, talk only to Firstmate.
 
-Want just the orchestrator, without research or code-managing crewmates? See [Gru](gru/README.md).
+Want just the orchestrator, without research or code-managing crewmates? See [Grok Minion](grok-minion/README.md).
 
 ## Features
 

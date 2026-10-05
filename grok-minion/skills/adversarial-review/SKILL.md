@@ -1,23 +1,21 @@
 ---
 name: Adversarial review
-description: Use after a ship cloud agent pushes a branch, before any pull request.
+description: Use when Dr. Nefario has a pushed ship branch from the lab, before any pull request.
 ---
 
-# Adversarial review (Dr. Nefario)
+# Adversarial review
 
 Review draft ship work on a pushed branch. Do not open a pull request until this review is clean.
 
 ## Who runs it
 
-Gru starts a **fresh** subagent. Do not resume an old review subagent. Run the review subagent at high reasoning even though Gru runs low, unless the boss asked for a specific model.
+Dr. Nefario launches a **fresh** Cursor cloud agent in the lab for each review round, separate from the agent that wrote the code. Do not reuse the coding agent or an old review agent: the point is fresh eyes that did not write the change. Same settings as other lab agents (grok 4.6, high reasoning, not fast).
 
-The subagent starts blank. The dispatch must include the repo, source control CLI, branch, base, and this entire prompt.
-
-The subagent cannot see a cloud agent VM. It reads the branch through the source control CLI recorded on the job row (`gh`, `glab`, or the recorded forge) or git, on the shared Grok Bot computer.
+The review agent starts blank. The task must include the repo, branch, base, and this entire prompt. It reads the branch from the repo; it does not push.
 
 ## Prompt
 
-<Use this as the subagent task. Fill the context fields.>
+<Use this as the review agent's task. Fill the context fields.>
 
 Review the code changes and return structured findings with a risk assessment.
 
@@ -77,10 +75,10 @@ Return JSON:
 
 ## Loop
 
-- `auto-fix`: reply to the same cloud agent. Then a new fresh review subagent.
-- `ask-user`: take one decision card to the boss. Do not raise.
+- `auto-fix`: send the findings to the coding agent. Then a new fresh review agent.
+- `ask-user`: report it to Kevin, who takes one decision card to the boss. Do not raise.
 - `error`: do not raise.
-- Empty findings, or only `info` / already-answered `ask-user`: the cloud agent may open the pull request.
+- Empty findings, or only `info` / already-answered `ask-user`: the coding agent may open the pull request.
 
 Fix-forward. Do not revert the author's intentional first commit to silence a finding.
 
