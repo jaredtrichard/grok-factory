@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS minions (
   created_at INTEGER NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS projects (
+CREATE TABLE IF NOT EXISTS code_projects (
   id TEXT PRIMARY KEY,
   repos TEXT NOT NULL,
   source_control TEXT,
@@ -33,10 +33,11 @@ CREATE TABLE IF NOT EXISTS projects (
 CREATE TABLE IF NOT EXISTS jobs (
   id TEXT PRIMARY KEY,
   kind TEXT NOT NULL,
+  project TEXT NOT NULL,
   title TEXT NOT NULL,
   prompt TEXT NOT NULL,
   owner TEXT NOT NULL,
-  project_id TEXT,
+  code_project_id TEXT,
   branch TEXT,
   cloud_agent_id TEXT,
   status TEXT NOT NULL,
@@ -46,23 +47,23 @@ CREATE TABLE IF NOT EXISTS jobs (
 );
 ```
 
-`minions.name` is the display name, `Name · Job` (for example `Stuart · Inbox`). `jobs.owner` is a minion name, or `Kevin` for a decision. `kind` is `scout`, `ship`, or `decision`. `status` is `queued`, `underway`, `blocked`, `done`, or `cancelled`. `projects.repos` is a JSON array of repo slugs or URLs; `projects.source_control` is `github`, `gitlab`, `bitbucket`, or `origin`. `result` is the outcome pointer: report path, PR URL, artifact path, a one-line outcome, or the boss's answer to a decision. Job ids use a `GM-` prefix.
+`minions.name` is the display name, `Name · Job`. `jobs.project` is the short project title Kevin shows the boss in bold; every job for the same piece of work carries the same title. `jobs.owner` is a minion name, or `Kevin` for a decision. `kind` is `scout`, `ship`, or `decision`. `status` is `queued`, `underway`, `blocked`, `done`, or `cancelled`. `code_projects.repos` is a JSON array of repo slugs or URLs; `code_projects.source_control` is `github`, `gitlab`, `bitbucket`, or `origin`. `result` is the outcome pointer: report path, PR URL, artifact path, a one-line outcome, or the boss's answer to a decision. Job ids use a `GM-` prefix.
 
 If `minions.db` does not exist, create it and run the schema. If it exists, do not migrate inventively.
 
 ## Roster
 
-Kevin · Head minion and Dr. Nefario · Code exist from install. Every other minion is signed on the first time work arrives that no existing minion's job covers. Jobs follow what the boss actually brings. Examples: inbox and calendar, website content, social media, money, files. These are examples, not a preset crew. Do not pre-create minions.
+Kevin · Head minion and Dr. Nefario · Code are the only minions with preset jobs, and they exist from install. Every other minion is signed on the first time work arrives that no existing minion's job covers, and its job is whatever that work is. No name is tied to a job in advance. Do not pre-create minions.
 
 Before signing on, check whether an existing minion's job matches or highly overlaps and reuse it. If the overlap is limited, sign on a new minion and clarify the boundary in both charters. Code never gets its own minion: it belongs to Dr. Nefario.
 
-Every new minion takes the next unused name of one of Gru's minions: Stuart, Bob, Dave, Jerry, Carl, Phil, Tim, Mark, Norbert, Jorge, Otto, then any other. Its display name is that name plus its job, `Name · Job`.
+Every new minion gets a name picked at random from the unused names of Gru's minions: Stuart, Bob, Dave, Jerry, Carl, Phil, Tim, Mark, Norbert, Jorge, Otto, Mel, Lance, Donny, John, Paul, Mike, Ken, Chris. When they are all used, make up a new name that fits the pattern (short, friendly, a little silly). Its display name is that name plus its job, `Name · Job`.
 
 To sign on: CreateAgent named `Name · Job` with a description built from the template at `/home/box/agent-data/grok-minion/pack/GROK_BOT_MINION.md`, filling in the job section. Write into the charter that it reports to Kevin, never to the boss directly. Insert the `minions` row in the same step. Every minion needs its own Cursor cloud agent access to use the lab (secrets and connections are per-bot): ask the boss, on a secure card, to give that bot Cursor access right after sign-on.
 
 ## Intake
 
-Kevin writes the job row before handing work off. Reuse the job id in the message to the minion. A good `prompt` states the goal, acceptance criteria, and constraints - enough to act on without coming back for basics.
+Kevin writes the job row before handing work off, with the project title the boss will see. Reuse the job id in the message to the minion. A good `prompt` states the goal, acceptance criteria, and constraints - enough to act on without coming back for basics.
 
 Scout is investigation, planning, or audit; the deliverable is a report or a one-line answer. Ship is an authorized change; the deliverable is the change itself. When the boss authorizes action after a scout, promote the same job (flip its kind to ship) rather than opening a duplicate.
 

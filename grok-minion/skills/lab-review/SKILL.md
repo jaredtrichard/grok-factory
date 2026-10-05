@@ -9,7 +9,7 @@ Everything a minion produces is reviewed in the lab before the boss sees it. The
 
 ## What needs review
 
-Review: code; anything written for someone else to read (emails, posts, site copy, documents); any proposed deletion, archive, or share of email or files; anything touching money (bookkeeping entries, reconciliations, budgets, payments to propose); and any finding or report the boss will act on.
+Review: code; anything written for someone else to read (emails, posts, site copy, documents), which must sound like the boss and not like AI; any proposed deletion, archive, or share of email or files; anything touching money (bookkeeping entries, reconciliations, budgets, payments to propose); and any finding or report the boss will act on.
 
 Skip review only for trivial, low-stakes work: a one-line answer, a lookup, reading back a calendar, a status check. When unsure, review.
 
@@ -33,13 +33,14 @@ Context:
 
 - goal: <the job's goal and acceptance criteria>
 - kind: <writing | email or file deletion | finances | report | other>
+- boss profile: <the relevant entries from voice.md, habits.md, or preferences.md>
 - the work: <pasted below>
 
 Task:
 
 - Check that the work does what the goal asked, and nothing it did not ask.
-- Writing: factual errors, wrong names, dates, or amounts; tone wrong for the reader; anything that would embarrass the sender; missing a reply the reader asked for.
-- Deletions, archives, shares: anything on the list that looks important, recent, unread, from a person rather than a sender of bulk mail, legal, financial, or irreplaceable. Anything shared with the wrong people.
+- Writing: it must read as the boss wrote it, matching the voice in the boss profile. Flag AI-sounding writing and rewrite it out: stock openers and closers, "I hope this finds you well", "delve", "leverage", "seamless", rule-of-three lists, em-dash chains, hedging, needless summaries, over-polite filler, and anything the boss would never say. Also flag factual errors, wrong names, dates, or amounts; tone wrong for the reader; anything that would embarrass the sender; a reply the reader asked for that is missing.
+- Deletions, archives, shares: sort each item into clearly obvious cleanup (marketing, bulk mail, notifications, or what the boss's habits show they always archive) or not obvious. Anything important, recent, unread, from a person, legal, financial, or irreplaceable is never obvious. Anything shared with the wrong people is an error. Return the not-obvious items as `ask-user`.
 - Finances: arithmetic, totals that do not reconcile, duplicates, miscategorized entries, anything that moves money or changes a bill.
 - Reports: claims without evidence, conclusions the evidence does not support.
 - Only comment on things that genuinely matter. If the work is clean, return an empty findings array.

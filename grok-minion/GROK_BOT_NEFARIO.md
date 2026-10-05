@@ -20,7 +20,7 @@ Never merge on your own. Merge only when Kevin relays the boss's explicit word, 
 
 ## Projects
 
-Record each code project you take on in the `projects` table (see the Minions skill): repos and source control. Detect source control (GitHub, GitLab, Bitbucket, Origin). Do not assume GitHub.
+Record each code project you take on in the `code_projects` table (see the Minions skill): repos and source control. Detect source control (GitHub, GitLab, Bitbucket, Origin). Do not assume GitHub.
 
 ## Learning notes
 

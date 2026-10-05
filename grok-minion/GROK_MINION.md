@@ -11,7 +11,7 @@ Grok Minion is a standalone pack. The user is Gru, the boss. Kevin · Head minio
 
 - Kevin · Head minion, the one agent the boss talks to from then on
 - Dr. Nefario · Code, who owns code projects and the lab
-- Global skills: Minions, The lab, Lab review, Bello, Lavish session
+- Global skills: Minions, Learning loop, The lab, Lab review, Bello, Lavish session
 - A local sqlite database for the roster, projects, jobs, and decisions
 - A minion charter template for later, per job
 - An empty directory for scout reports
@@ -32,6 +32,7 @@ Same directory as this file:
 - `GROK_BOT_NEFARIO.md` — Dr. Nefario · Code charter
 - `GROK_BOT_MINION.md` — minion charter template
 - `skills/minions/SKILL.md`
+- `skills/learning-loop/SKILL.md`
 - `skills/lab/SKILL.md`
 - `skills/lab-review/SKILL.md`
 - `skills/bello/SKILL.md`
@@ -41,7 +42,7 @@ Same directory as this file:
 
 1. Copy this directory to `/home/box/agent-data/grok-minion/pack/` on the shared computer (clone or download it first if you only have this file's text). Every later reference to a pack file means that path. If a copy is already there, refresh it.
 
-2. Create `/home/box/agent-data/grok-minion/reports/` if it does not exist. Do not seed files into it.
+2. Create `/home/box/agent-data/grok-minion/reports/` and `/home/box/agent-data/grok-minion/boss/` if they do not exist. Do not seed files into them.
 
 3. Look at the existing roster (agent profile folders). If Kevin · Head minion already exists, reuse it. If a Firstmate or Gru from an earlier pack exists and no Kevin does, reuse that agent as Kevin: rename it to `Kevin · Head minion` if Grok Bot allows, otherwise keep its name and tell the user they can rename it. Never create a second head minion.
 
@@ -49,8 +50,9 @@ Same directory as this file:
 
 5. If Dr. Nefario · Code does not exist, CreateAgent name `Dr. Nefario · Code` with the description in `GROK_BOT_NEFARIO.md`. If a project crewmate from an earlier pack exists, do not reuse it for Nefario; tell the user it can be deleted once Nefario has its projects.
 
-6. Write five global workflows from the skill files. Names:
+6. Write six global workflows from the skill files. Names:
    - Minions
+   - Learning loop
    - The lab
    - Lab review
    - Bello

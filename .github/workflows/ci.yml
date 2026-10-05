@@ -31,6 +31,7 @@ jobs:
             grok-minion/GROK_BOT_NEFARIO.md \
             grok-minion/GROK_BOT_MINION.md \
             grok-minion/skills/minions/SKILL.md \
+            grok-minion/skills/learning-loop/SKILL.md \
             grok-minion/skills/lab/SKILL.md \
             grok-minion/skills/lab-review/SKILL.md \
             grok-minion/skills/bello/SKILL.md \
