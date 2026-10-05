@@ -1,17 +1,12 @@
 # Gru
 
-A Grok Bot pack for running a solo business and a life: one Gru, a few role minions, and Dr. Nefario's lab for code.
+A general Grok Bot pack: one Gru, minions that take on whatever roles you need, and Dr. Nefario's lab for code.
 
 ## What it is
 
 Gru is the one bot you talk to. His job is intake, routing, and supervision, so he runs at low reasoning effort.
 
-- **Minions** are persistent Grok bots, one role each, signed on the first time that role is needed:
-  - Kevin (lead minion): email and calendar
-  - Stuart: website
-  - Bob: social media
-  - Dave: money
-  - Jerry: files
+- **Minions** are persistent Grok bots, one role each, signed on the first time work arrives that no minion covers. Roles follow what you bring: email and calendar, a website, social media, finances, files, or anything else. They take names in order (Kevin first, then Stuart, Bob, Dave, ...), and the first one is the lead minion.
 - **The lab** is Cursor cloud agents (grok 4.6, high reasoning). All code changes go there, including the website's code, plus any heavy lifting. Only Gru sends work to the lab.
 - **Dr. Nefario** is a fresh review subagent that inspects every code branch before a pull request. You merge.
 
@@ -23,7 +18,7 @@ Compared with the full Grok Factory pack in the repo root:
 |---|---|---|
 | Equity research (scan, cover, book) | yes | no |
 | Grok bots that manage code | yes, one crewmate per project | no, code goes to the lab |
-| Role bots | inbox, documents, as needed | admin, website, social, money, files |
+| Role bots | inbox, documents, as needed | minions, any role, as needed |
 | Cursor cloud agents | via crewmates and researchers | the lab, sent by Gru |
 | Adversarial review before a PR | yes | yes (Dr. Nefario) |
 | Backlog | `factory.db` + `book.db` | `jobs.db` |
@@ -42,11 +37,11 @@ Then talk only to Gru.
 ```
 > what's on my calendar this week, and anything urgent in email?
 
-# Kevin checks and reports. Replies come back as drafts for your yes.
+# The admin minion checks and reports. Replies come back as drafts for your yes.
 
 > post the launch announcement on LinkedIn and X
 
-# Bob drafts both. Gru brings them to you to approve.
+# The social media minion drafts both. Gru brings them to you to approve.
 
 > the contact form on the site is broken
 
@@ -65,7 +60,7 @@ Then talk only to Gru.
    │  asks, approvals, "merge it"
    ▼
  Gru (low effort) ── jobs.db
-   ├─ Kevin · Stuart · Bob · Dave · Jerry ─► drafts and results ─► your yes for anything outward
+   ├─ minions (Kevin, Stuart, ...) ─► drafts and results ─► your yes for anything outward
    └─ the lab (Cursor cloud) ─► report, or branch ─► Dr. Nefario review ─► PR ─► you merge
 ```
 

@@ -7,7 +7,7 @@ Standalone Grok Bot pack. Software, research, and general-purpose from this repo
 - Software backlog: `factory.db`. Research book: `book.db`.
 - Equity-research GitHub repo is the durable store for research and models; `research-remote` holds `owner/name`.
 
-`gru/` is a separate, self-contained pack: orchestrator Gru, role minions (admin, website, social, money, files) that never touch code, and a lab of Cursor cloud agents for code. No research. Despicable Me voice: the user is "boss", not captain. Installer `gru/GRU.md`; data in `/home/box/agent-data/gru/`. Keep it independent of the root pack's files.
+`gru/` is a separate, self-contained pack: orchestrator Gru, general role minions signed on as work arrives, never touching code, and a lab of Cursor cloud agents for code. No research. Despicable Me voice: the user is "boss", not captain. Installer `gru/GRU.md`; data in `/home/box/agent-data/gru/`. Keep it independent of the root pack's files.
 
 This repo is markdown. Do not add a JS toolchain unless the pack stops being markdown.
 Do not point installers or charters at an outside pack.

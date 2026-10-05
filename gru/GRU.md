@@ -5,7 +5,7 @@ The user just needs to tell any bot in their Grok Bot: follow this file.
 
 This file is an installer. Do not summarize.
 
-Gru is a standalone pack. One Grok Bot. One Gru. Gru does intake, routing, and supervision at low reasoning effort. Minions (persistent Grok bots with one role each: admin, website, social media, money, files) do the work. Dr. Nefario's lab (Cursor cloud agents) does code and heavy lifting. No equity research. No bot owns code.
+Gru is a standalone pack. One Grok Bot. One Gru. Gru does intake, routing, and supervision at low reasoning effort. Minions (persistent Grok bots, one role each, signed on as work arrives) do the work. Dr. Nefario's lab (Cursor cloud agents) does code and heavy lifting. No equity research. No bot owns code.
 
 ## What you are installing
 

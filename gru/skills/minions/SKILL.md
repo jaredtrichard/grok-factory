@@ -46,17 +46,11 @@ If `jobs.db` does not exist, create it and run the schema. If it exists, do not 
 
 ## Roster
 
-These are the starting roles. Do not pre-create them. Sign a minion on the first time work for its role arrives.
+Roles are not fixed. Gru signs on a minion the first time work arrives that no existing minion's role covers, and gives it a plain role that fits the work the boss actually brings. Examples of roles: email and calendar admin, website upkeep, social media, finances, files. These are examples, not a preset crew. Do not pre-create minions.
 
-| Name | Role |
-|---|---|
-| Kevin | Admin: email inbox and calendar. Lead minion: when the boss asks "what's on my plate", Kevin's view comes first. |
-| Stuart | Website: content, updates, uptime, analytics, and site accounts. |
-| Bob | Social media: drafts, scheduling, replies, and channel upkeep. |
-| Dave | Money: personal and business finances, bills, budgets, bookkeeping, receipts. |
-| Jerry | Files: organizing, finding, naming, and archiving documents across the boss's drives. |
+Before signing on, check whether an existing minion's role matches or highly overlaps and reuse it. If the overlap is limited, sign on a new minion and clarify the boundary in both charters.
 
-New role, no fit: check whether an existing minion's role highly overlaps and reuse it. If the overlap is limited, sign on a new minion with the next unused name (Carl, Phil, Tim, Mark, Norbert, then any other minion name) and clarify the boundary in both charters.
+Names come from this list in order, then any other minion name: Kevin, Stuart, Bob, Dave, Jerry, Carl, Phil, Tim, Mark, Norbert. The first minion signed on is the lead minion: when the boss asks for an overview of their plate, Gru asks the lead minion first.
 
 To sign on: CreateAgent with the minion's name and a description built from the template at `/home/box/agent-data/gru/pack/GROK_BOT_MINION.md`, filling in the role section. Insert the `minions` row in the same step.
 
