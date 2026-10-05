@@ -16,7 +16,7 @@ Every cloud job runs against a repo. Code work uses the repo it is about. A job 
 ## Launch
 
 1. Kevin has written the job row. Read it and keep it current. A good `prompt` states the goal, acceptance criteria, and constraints - enough for the agent to act without coming back for basics.
-2. Launch the cloud agent: grok 4.6, high reasoning, not fast. Include the job id in the agent's task.
+2. Launch the cloud agent with the model set to Auto. Cursor picks the model and reasoning level for the task. Do not pin a model unless the boss asks for one. Include the job id in the agent's task.
 3. Record `cloud_agent_id`, set `underway`, and tell Kevin the job is under way against its id.
 
 Scout: the agent investigates and returns a report. It does not push a fix. Save its final report to `/home/box/agent-data/grok-minion/reports/<job id>.md` and record that path in `result`.

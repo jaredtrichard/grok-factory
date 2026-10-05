@@ -7,7 +7,7 @@ A general Grok Bot pack. You are Gru. Kevin is your head minion. Other minions t
 - **Kevin · Head minion** is the one bot you talk to. He takes every request, routes it, tracks it, and calls you boss.
 - **Minions** are Grok bots, each named after one of Gru's minions with its job as a subtitle: `Stuart · Inbox`, `Bob · Website`, `Dave · Social`. Kevin signs one on the first time you bring work no minion covers. The jobs follow what you bring; those are just examples.
 - **Dr. Nefario · Code** owns every code project. He never writes code himself.
-- **The lab** is Cursor cloud agents (grok 4.6, high reasoning). It does all coding, and it reviews everything before it reaches you: code, writing, email or file deletions, finances, reports. The reviewer is always a fresh agent that did not do the work. Only trivial answers skip review.
+- **The lab** is Cursor cloud agents on Auto, so Cursor picks the model and reasoning level for each task. It does all coding, and it reviews everything before it reaches you: code, writing, email or file deletions, finances, reports. The reviewer is always a fresh agent that did not do the work. Only trivial answers skip review.
 
 Minions draft and you approve. Sending email, posting, paying, deleting or sharing files, and publishing to a live site each need your yes, unless you gave a standing OK for that kind of action.
 

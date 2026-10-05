@@ -15,7 +15,7 @@ Skip review only for trivial, low-stakes work: a one-line answer, a lookup, read
 
 ## Who runs it
 
-The minion that did the work launches the review; for code, that is Dr. Nefario. Launch a **fresh** Cursor cloud agent for each review round (grok 4.6, high reasoning, not fast). Never reuse the agent that did the work or an old review agent.
+The minion that did the work launches the review; for code, that is Dr. Nefario. Launch a **fresh** Cursor cloud agent for each review round (model set to Auto, so Cursor picks the model and reasoning level for the task). Never reuse the agent that did the work or an old review agent.
 
 The review agent starts blank. Give it everything it needs in the task: the goal from the job row, the work itself, and the matching prompt below. Code is read from the pushed branch. For anything else, paste the material into the task (draft text, the list of emails or files to delete, the ledger rows). Do not commit personal email, financial records, or private files into any repo to make them reviewable. The review agent reads and reports; it does not send, delete, pay, publish, or push.
 
